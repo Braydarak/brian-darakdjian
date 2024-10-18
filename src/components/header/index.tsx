@@ -66,7 +66,7 @@ const Header = () => {
               {t("headerGetintouch")}
             </span>
           </Link>
-          <div className="h-[1px] bg-greyFont w-[60%] mt-5"></div>
+          <div className="h-[1px] bg-grayFont w-[60%] mt-5"></div>
           <div className="flex items-center justify-around w-full pt-5 pb-5">
             <Link to={"https://github.com/Braydarak"} onClick={toggleMenu}>
               <GithubLogo />
@@ -82,7 +82,7 @@ const Header = () => {
       )}
 
       {/* Menú de desktop */}
-      <div className="hidden md:flex justify-around w-[60%] h-full items-center text-sm text-greyFont">
+      <div className="hidden md:flex justify-around w-[60%] h-full items-center text-sm text-grayFont">
         <Link to={"/"}>
           <span className="cursor-pointer duration-300 transition-colors hover:text-white">
             {t("headerHome")}
