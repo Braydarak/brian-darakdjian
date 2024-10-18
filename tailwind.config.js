@@ -11,7 +11,7 @@ module.exports = {
         secondary: "#1B1B1B",
         primaryButton: "#3F8E00",
         shadowButton: "#62BA1B",
-        greyFont: "#9C9C9C",
+        grayFont: "#9C9C9C",
         whiteFont: "#FFFFFF"
       },
       fontFamily: {

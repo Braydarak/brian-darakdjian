@@ -37,7 +37,7 @@ const ContactForm = () => {
           onChange={handleChange}
           required
           placeholder={t("contactName")}
-          className="block w-full p-2 mt-1 rounded-md border bg-transparent border-greyFont"
+          className="block w-full p-2 mt-1 rounded-md border bg-transparent border-grayFont"
         />
 
         <input
@@ -47,7 +47,7 @@ const ContactForm = () => {
           onChange={handleChange}
           required
           placeholder={t("contactEmail")}
-          className="block w-full p-2 mt-1 rounded-md border bg-transparent border-greyFont"
+          className="block w-full p-2 mt-1 rounded-md border bg-transparent border-grayFont"
         />
       </div>
 
@@ -57,7 +57,7 @@ const ContactForm = () => {
         onChange={handleChange}
         required
         placeholder={t("contactComments")}
-        className="block w-full p-2 mt-1 rounded-md border bg-transparent border-greyFont h-24"
+        className="block w-full p-2 mt-1 rounded-md border bg-transparent border-grayFont h-24"
       ></textarea>
       <div className="flex justify-end">
         <button
