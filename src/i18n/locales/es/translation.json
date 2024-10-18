@@ -1,0 +1,17 @@
+{
+  "title": "Brian Darakdjian - Desarrollador Web",
+  "headerHome": "Inicio",
+  "headerLastwork": "Ultimo trabajo",
+  "headerGetintouch": "Pongamonos en contacto",
+  "contactTitle": "Contáctame",
+  "contactName": "Nombre completo",
+  "contactEmail": "Correo electrónico",
+  "contactComments": "Escribí un comentario",
+  "contactButton": "Enviar formulario",
+  "homeDescription": "Me especializo en construir aplicaciones web modernas y responsivas con React, TypeScript y Tailwind. Con una pasión por el código limpio y un diseño intuitivo, convierto ideas en experiencias digitales refinadas.",
+  "homeResume": "Mirá mi currículum →",
+  "homeWorked": "Trabajé con",
+  "lastWorkTitle": "Publifer - Imprenta, Serigrafía y Rotulación Profesional",
+  "lastworkDescription": "Publifer es el proyecto más reciente que he desarrollado como freelancer, donde opté por utilizar tecnologías modernas como React, TypeScript y Tailwind para crear una web dinámica y eficiente. Una de las implementaciones clave fue la integración de EmailJS, que permite gestionar de manera automatizada tanto las solicitudes de presupuesto como el formulario de contacto, optimizando la experiencia del usuario y facilitando la comunicación con el cliente.",
+  "lastworkButton": "Visitar sitio"
+}
