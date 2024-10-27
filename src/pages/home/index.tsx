@@ -5,34 +5,47 @@ import NuriaIturriozLogo from "../../components/nuriaIturriozLogo";
 import PubliferLogo from "../../components/publiferLogo";
 import Brian from "../../assets/Brian.webp";
 import { useTranslation } from "react-i18next";
+import BrianDarakdjian from "../../assets/brian-darakdjian.pdf";
 
 const logos = [
-  { id: 1, component: <PubliferLogo />, onClick: () => window.open("https://publifercm.com", "_blank") },
-  { id: 2, component: <AlmangoLogo width="5rem" />, onClick: () => window.open("https://www.almango.com.ar/", "_blank") },
-  { id: 3, component: <NuriaIturriozLogo />, onClick: () => window.open("https://nuriaiturrioz.com/", "_blank") },
+  {
+    id: 1,
+    component: <PubliferLogo />,
+    onClick: () => window.open("https://publifercm.com", "_blank"),
+  },
+  {
+    id: 2,
+    component: <AlmangoLogo width="5rem" />,
+    onClick: () => window.open("https://www.almango.com.ar/", "_blank"),
+  },
+  {
+    id: 3,
+    component: <NuriaIturriozLogo />,
+    onClick: () => window.open("https://nuriaiturrioz.com/", "_blank"),
+  },
 ];
 
 const Home = () => {
-  const [logoIndexes, setLogoIndexes] = useState([0, 1]); 
+  const [logoIndexes, setLogoIndexes] = useState([0, 1]);
   const { t } = useTranslation();
 
-// eslint-disable-next-line react-hooks/exhaustive-deps
-const getNextLogoIndexes = () => {
-  const [firstLogo, secondLogo] = logoIndexes;
-  const newFirstIndex = (firstLogo + 1) % logos.length; 
-  let newSecondIndex = (secondLogo + 1) % logos.length;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const getNextLogoIndexes = () => {
+    const [firstLogo, secondLogo] = logoIndexes;
+    const newFirstIndex = (firstLogo + 1) % logos.length;
+    let newSecondIndex = (secondLogo + 1) % logos.length;
 
-  if (newFirstIndex === newSecondIndex) {
-    newSecondIndex = (newSecondIndex + 1) % logos.length;
-  }
+    if (newFirstIndex === newSecondIndex) {
+      newSecondIndex = (newSecondIndex + 1) % logos.length;
+    }
 
-  return [newFirstIndex, newSecondIndex];
-};
+    return [newFirstIndex, newSecondIndex];
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
       setLogoIndexes(getNextLogoIndexes);
-    }, 10000); 
+    }, 10000);
 
     return () => clearInterval(interval);
   }, [getNextLogoIndexes, logoIndexes]);
@@ -51,7 +64,10 @@ const getNextLogoIndexes = () => {
             <p className="text-lg mt-0 md:mt-4 mb-8 font-IBM">
               {t("homeDescription")}
             </p>
-            <button className="bg-primaryButton text-whiteFont py-3 px-6 w-[80%] md:w-[60%] rounded-lg shadow-custom hover:bg-shadowButton transition duration-300">
+            <button
+              className="bg-primaryButton text-whiteFont py-3 px-6 w-[80%] md:w-[60%] rounded-lg shadow-custom hover:bg-shadowButton transition duration-300"
+              onClick={() => window.open(BrianDarakdjian, "_blank")}
+            >
               {t("homeResume")}
             </button>
           </div>
@@ -68,7 +84,9 @@ const getNextLogoIndexes = () => {
 
         {/* Logos de Empresas en Móvil */}
         <div className="w-[100%] fixed bottom-0 mb-20 items-center flex flex-col md:hidden">
-          <span className="text-start w-full md:w-[70%] mb-5 ml-10">{t("homeWorked")}</span>
+          <span className="text-start w-full md:w-[70%] mb-5 ml-10">
+            {t("homeWorked")}
+          </span>
           <div className="flex space-x-4">
             <div
               className="w-[160px] h-[60px] rounded-md border-secondary border bg-cover flex justify-center items-center cursor-pointer"
@@ -87,7 +105,9 @@ const getNextLogoIndexes = () => {
 
         {/* Logos de Empresas en Desktop */}
         <div className="hidden md:flex w-[100%] bottom-0 mb-20 items-center flex-col">
-          <span className="text-start w-full md:w-[70%] mb-5">{t("homeWorked")}</span>
+          <span className="text-start w-full md:w-[70%] mb-5">
+            {t("homeWorked")}
+          </span>
           <div className="flex space-x-6">
             {logos.map((logo) => (
               <div

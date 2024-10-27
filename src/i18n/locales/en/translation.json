@@ -12,5 +12,6 @@
     "homeResume":"Look at my resume →",
     "homeWorked":"Worked with",
     "lastworkDescription":"Publifer is the most recent project I developed as a freelancer, where I chose to use modern technologies such as React, TypeScript, and Tailwind to create a dynamic and efficient website. One of the key implementations was the integration of EmailJS, which allows for the automated handling of both budget requests and the contact form, optimizing the user experience and facilitating communication with the client.",
-    "lastworkButton":"Watch site"
+    "lastworkButton":"Watch site",
+    "emailError":"You must complete the form with a valid email."
 }

@@ -13,5 +13,6 @@
   "homeWorked": "Trabajé con",
   "lastWorkTitle": "Publifer - Imprenta, Serigrafía y Rotulación Profesional",
   "lastworkDescription": "Publifer es el proyecto más reciente que he desarrollado como freelancer, donde opté por utilizar tecnologías modernas como React, TypeScript y Tailwind para crear una web dinámica y eficiente. Una de las implementaciones clave fue la integración de EmailJS, que permite gestionar de manera automatizada tanto las solicitudes de presupuesto como el formulario de contacto, optimizando la experiencia del usuario y facilitando la comunicación con el cliente.",
-  "lastworkButton": "Visitar sitio"
+  "lastworkButton": "Visitar sitio",
+  "emailError":"Debe completar el formulario con un email valido."
 }
