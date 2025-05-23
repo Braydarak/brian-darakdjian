@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import emailjs from "emailjs-com";
-import Spinner from "../spinner"; 
+import Spinner from "../spinner";
 
 const ContactForm = () => {
   const { t } = useTranslation();
@@ -16,20 +16,18 @@ const ContactForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const capitalizeFirstLetter = (value: string) => {
-    return value.charAt(0).toUpperCase() + value.slice(1);
-  };
+  const capitalizeFirstLetter = (value: string) =>
+    value.charAt(0).toUpperCase() + value.slice(1);
 
-  const handleChange = (e: { target: { name: string; value: string; }; }) => {
+  const handleChange = (e: { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
-
     setFormData({
       ...formData,
       [name]: name === "name" ? capitalizeFirstLetter(value) : value,
     });
   };
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
     if (!formData.email.includes("@")) {
@@ -56,7 +54,7 @@ const ContactForm = () => {
       )
       .then(
         (response) => {
-          console.log("Formulario enviado con éxito!", response.status, response.text);
+          console.log("Mensaje enviado:", response);
           setIsSubmitted(true);
           setIsLoading(false);
         },
@@ -72,11 +70,13 @@ const ContactForm = () => {
 
   if (isSubmitted) {
     return (
-      <div className="text-center p-6 bg-primary text-whiteFont rounded-lg shadow-md">
-        <h2 className="text-3xl mb-4">Gracias por comunicarte conmigo.</h2>
+      <div className="bg-[#29BCB3] rounded-xl shadow-lg p-8 max-w-lg mx-auto text-center select-none ">
+        <h2 className="text-3xl font-bold text-yellow-400 mb-6 font-comic-sans">
+          ¡Gracias por comunicarte conmigo!
+        </h2>
         <button
           onClick={() => navigate("/")}
-          className="bg-primaryButton text-whiteFont py-2 px-4 rounded-lg shadow-custom hover:bg-shadowButton transition duration-300"
+          className="bg-yellow-400 text-[#004d4b] font-bold py-3 px-6 rounded-full shadow-lg hover:bg-yellow-300 transition-colors duration-300 font-comic-sans"
         >
           Volver al inicio
         </button>
@@ -87,10 +87,13 @@ const ContactForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col w-full md:w-[50%] mx-auto bg-primary p-6 rounded-lg shadow-md"
+      className="bg-[#00a59e] md:w-[60%] w-[90%] mx-auto p-8 rounded-xl shadow-2xl font-raleway"
     >
-      <h2 className="text-4xl mb-5 text-whiteFont">{t("contactTitle")}</h2>
-      <div className="md:grid md:grid-cols-2 gap-5 mb-5 flex flex-col">
+      <h2 className="text-4xl font-bold mb-8 text-yellow-400 font-RockSalt drop-shadow-[2px_2px_0_rgba(0,0,0,1)] text-center select-none">
+        {t("contactTitle")}
+      </h2>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
         <input
           type="text"
           name="name"
@@ -98,7 +101,7 @@ const ContactForm = () => {
           onChange={handleChange}
           required
           placeholder={t("contactName")}
-          className="block w-full p-2 mt-1 rounded-md border bg-transparent border-grayFont outline-none"
+          className="rounded-lg border-4 border-yellow-400 bg-[#8DD2CD] px-4 py-3 text-[#004d4b] placeholder-white font-semibold focus:outline-none focus:border-yellow-600 transition duration-300 font-comic-sans"
         />
 
         <input
@@ -108,7 +111,7 @@ const ContactForm = () => {
           onChange={handleChange}
           required
           placeholder={t("contactEmail")}
-          className="block w-full p-2 mt-1 rounded-md border bg-transparent border-grayFont outline-none"
+          className="rounded-lg border-4 border-yellow-400 bg-[#8DD2CD] px-4 py-3 text-[#004d4b] placeholder-white font-semibold focus:outline-none focus:border-yellow-600 transition duration-300 font-comic-sans"
         />
       </div>
 
@@ -118,20 +121,24 @@ const ContactForm = () => {
         onChange={handleChange}
         required
         placeholder={t("contactComments")}
-        className="block w-full p-2 mt-1 rounded-md border bg-transparent border-grayFont h-24 outline-none"
+        className="rounded-lg border-4 border-yellow-400 w-full bg-[#8DD2CD] px-4 py-3 text-[#004d4b] placeholder-white font-semibold focus:outline-none focus:border-yellow-600 transition duration-300 h-28 resize-none font-comic-sans"
       ></textarea>
 
-      {emailError && <p className="text-red-500 mt-2">{t("emailError")}</p>}
+      {emailError && (
+        <p className="text-red-600 font-bold mt-2 font-comic-sans">
+          {t("emailError")}
+        </p>
+      )}
 
-      <div className="flex justify-end">
+      <div className="flex justify-center mt-8">
         <button
           type="submit"
-          disabled={isLoading} 
+          disabled={isLoading}
           className={`${
-            isLoading ? "opacity-70 cursor-not-allowed" : ""
-          } bg-primaryButton text-whiteFont py-2 px-4 w-[60%] md:w-[50%] rounded-lg shadow-custom hover:bg-shadowButton transition duration-300 mt-5 flex items-center justify-center`}
+            isLoading ? "opacity-70 cursor-not-allowed" : "hover:scale-105"
+          } bg-yellow-400 text-[#004d4b] font-bold py-3 px-12 rounded-full shadow-lg transition-transform duration-300 flex items-center justify-center font-comic-sans`}
         >
-          {isLoading ? <Spinner /> : t("contactButton")} 
+          {isLoading ? <Spinner /> : t("contactButton")}
         </button>
       </div>
     </form>

@@ -7,16 +7,17 @@ export default {
         'custom': '0 4px 10px rgba(98, 186, 27, 0.5)', 
       },
       colors: {
-        primary: "#080808",
-        secondary: "#1B1B1B",
-        primaryButton: "#3F8E00",
-        shadowButton: "#62BA1B",
-        grayFont: "#9C9C9C",
+        primary: "#8E0103",
+        secondary: "#FFB950",
+        primaryButton: "#A50104",
+        shadowButton: "#FF931F",
+        grayFont: "#7A0103",
         whiteFont: "#FFFFFF"
       },
       fontFamily: {
         Raleway: ["Raleway", "sans-serif"],
         IBM: ["IBM Plex Mono", "monospace"],
+        RockSalt: ["Rock Salt", "cursive"],
       },
     },
   },

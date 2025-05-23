@@ -1,5 +1,5 @@
 import React from 'react';
-import publiferLogo from '../../assets/image.webp'
+import publiferLogo from '../../assets/publifer.webp';
 
 const PubliferLogo: React.FC = () => {
   return (

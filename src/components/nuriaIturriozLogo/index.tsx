@@ -4,7 +4,7 @@ interface NuriaIturriozLogoProps {
   width?: string;
 }
 
-const NuriaIturriozLogo: React.FC<NuriaIturriozLogoProps> = ({ width = "5rem" }) => {
+const NuriaIturriozLogo: React.FC<NuriaIturriozLogoProps> = ({ width = "10rem" }) => {
   return (
     <svg
       id="aa5e03dc-245d-4839-b4d8-21e8ea6ef05f"

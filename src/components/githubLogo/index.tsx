@@ -5,7 +5,7 @@ interface GithubLogoProps {
   color?: string;
 }
 
-const GithubLogo: React.FC<GithubLogoProps> = ({ width = "5rem", color = '#9C9C9C' }) => {
+const GithubLogo: React.FC<GithubLogoProps> = ({ width = "5rem", color = 'white' }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -7,7 +7,7 @@ interface LinkedInLogoProps {
 
 const LinkedInLogo: React.FC<LinkedInLogoProps> = ({
   width = "5rem",
-  color = "#9C9C9C",
+  color = "white",
 }) => {
   return (
     <svg

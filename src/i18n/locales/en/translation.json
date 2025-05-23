@@ -1,7 +1,7 @@
 {
     "title": "Brian Darakdjian - Web Developer",
     "headerHome":"Home",
-    "headerLastwork":"Last Work",
+    "headerWork":"My Works",
     "headerGetintouch":"Get in touch",
     "contactTitle":"Contact me",
     "contactName":"Fullname",
@@ -13,5 +13,17 @@
     "homeWorked":"Worked with",
     "lastworkDescription":"Publifer is the most recent project I developed as a freelancer, where I chose to use modern technologies such as React, TypeScript, and Tailwind to create a dynamic and efficient website. One of the key implementations was the integration of EmailJS, which allows for the automated handling of both budget requests and the contact form, optimizing the user experience and facilitating communication with the client.",
     "lastworkButton":"Watch site",
-    "emailError":"You must complete the form with a valid email."
+    "emailError":"You must complete the form with a valid email.",
+    "moreAbout":"Know more about me",
+    "developer":"Web",
+    "web":"Developer",
+    "worksSubtitle":"Some proyects that came out from the Nuclear Plant",
+    "viewSite":"View site",
+    "publiferDesc":"Website of Printing, Serigraphy and Professional Signage",
+    "almangoDesc":"Online loan site",
+    "giedDesc":"Website for sports events",
+    "nuriaDesc":"Website of professional golfer Nuria Iturrioz",
+    "manducaDesc":"Website of a new 100% plant-based food. Made only from the seed of the carob tree",
+    "WebDevelopBy":"Web developed and designed by",
+    "inProgress": "In Development"
 }
