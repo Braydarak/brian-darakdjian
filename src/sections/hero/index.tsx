@@ -12,7 +12,7 @@ const Hero = () => {
       <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         {/* Text Section */}
         <div className="flex flex-col gap-6 text-black">
-          <h1 className="text-yellow-400 font-RockSalt drop-shadow-[2px_2px_0_rgba(0,0,0,1)] text-center md:text-left uppercase text-4xl sm:text-6xl md:text-7xl font-bold text-pretty tracking-widest leading-relaxed md:leading-[1.5] mt-8 sm:mt-10">
+          <h1 className="text-yellow-400 font-RockSalt drop-shadow-[2px_2px_0_rgba(0,0,0,1)] text-center md:text-left uppercase text-4xl sm:text-6xl md:text-7xl font-bold text-pretty tracking-widest leading-relaxed md:leading-[1.5] mt-[2rem] sm:mt-[2.5rem]">
             Brian Darakdjian
           </h1>
           <p className="font-RockSalt text-2xl sm:text-3xl text-black/80 text-center md:text-left">
