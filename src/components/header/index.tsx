@@ -26,7 +26,9 @@ const Header = () => {
         <div className="md:hidden flex items-center space-x-4">
           <button
             onClick={changeLanguage}
-            className="p-2 rounded-full bg-turquesa-80 hover:bg-turquesa-65 transition-colors shadow-md"
+            className={`p-2 rounded-full ${
+              i18n.language === "en" ? "bg-purple-400" : "bg-turquesa-80"
+            } hover:bg-turquesa-65 transition-colors shadow-md`}
             aria-label="Cambiar idioma"
           >
             <TranslateLogo />
@@ -55,24 +57,42 @@ const Header = () => {
 
         {/* Menú desktop */}
         <nav className="hidden md:flex space-x-10 items-center text-white font-raleway font-semibold text-lg">
-          <Link
-            to={"/"}
-            className="hover:text-[#29BCB3] transition-colors duration-200"
+          <a
+            href="#top"
+            className="hover:text-[#29BCB3] transition-colors duration-200 cursor-pointer"
+            onClick={(e) => {
+              e.preventDefault();
+              document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
+            }}
           >
             {t("headerHome")}
-          </Link>
-          <Link
-            to={"#work"}
-            className="hover:text-[#29BCB3] transition-colors duration-200"
+          </a>
+          <a
+            href="#work"
+            className="hover:text-[#29BCB3] transition-colors duration-200 cursor-pointer"
+            onClick={(e) => {
+              e.preventDefault();
+              const target = document.querySelector("#work");
+              if (target) {
+                target.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
           >
             {t("headerWork")}
-          </Link>
-          <Link
-            to={"#contact"}
-            className="hover:text-[#29BCB3] transition-colors duration-200"
+          </a>
+          <a
+            href="#contact"
+            className="hover:text-[#29BCB3] transition-colors duration-200 cursor-pointer"
+            onClick={(e) => {
+              e.preventDefault();
+              const target = document.querySelector("#contact");
+              if (target) {
+                target.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
           >
             {t("headerGetintouch")}
-          </Link>
+          </a>
         </nav>
 
         {/* Redes y cambio idioma desktop */}
@@ -81,6 +101,8 @@ const Header = () => {
             to={"https://github.com/Braydarak"}
             className="hover:text-[#29BCB3] transition-colors duration-200"
             aria-label="GitHub"
+            rel="noopener noreferrer"
+            target="_blank"
           >
             <GithubLogo />
           </Link>
@@ -88,12 +110,16 @@ const Header = () => {
             to={"https://www.linkedin.com/in/briandarakdjian/"}
             className="hover:text-[#29BCB3] transition-colors duration-200"
             aria-label="LinkedIn"
+            rel="noopener noreferrer"
+            target="_blank"
           >
             <LinkedInLogo />
           </Link>
           <button
             onClick={changeLanguage}
-            className="p-2 rounded-full bg-turquesa-80 hover:bg-turquesa-65 transition-colors shadow-md"
+            className={`p-2 rounded-full ${
+              i18n.language === "en" ? " bg-[#2f64d6]" : "bg-turquesa-80"
+            } hover:bg-turquesa-65 transition-colors shadow-md`}
             aria-label="Cambiar idioma"
           >
             <TranslateLogo />
@@ -104,27 +130,27 @@ const Header = () => {
       {/* Menú desplegable móvil */}
       {isMenuOpen && (
         <nav className="md:hidden bg-[#00a59e] border-t border-turquesa-65 shadow-inner rounded-b-lg flex flex-col items-center py-6 space-y-6 text-white font-raleway font-semibold text-lg z-40">
-          <Link
-            to={"/"}
+          <a
+            href="#top"
             onClick={toggleMenu}
             className="hover:text-[#29BCB3] transition-colors duration-200"
           >
             {t("headerHome")}
-          </Link>
-          <Link
-            to={"#work"}
+          </a>
+          <a
+            href="#work"
             onClick={toggleMenu}
             className="hover:text-[#29BCB3] transition-colors duration-200"
           >
             {t("headerWork")}
-          </Link>
-          <Link
-            to={"#contact"}
+          </a>
+          <a
+            href="#contact"
             onClick={toggleMenu}
             className="hover:text-[#29BCB3] transition-colors duration-200"
           >
             {t("headerGetintouch")}
-          </Link>
+          </a>
 
           <div className="flex space-x-8 mt-4">
             <Link
@@ -132,6 +158,8 @@ const Header = () => {
               onClick={toggleMenu}
               className="hover:text-[#29BCB3] transition-colors duration-200"
               aria-label="GitHub"
+              rel="noopener noreferrer"
+              target="_blank"
             >
               <GithubLogo />
             </Link>
@@ -140,6 +168,8 @@ const Header = () => {
               onClick={toggleMenu}
               className="hover:text-[#29BCB3] transition-colors duration-200"
               aria-label="LinkedIn"
+              rel="noopener noreferrer"
+              target="_blank"
             >
               <LinkedInLogo />
             </Link>

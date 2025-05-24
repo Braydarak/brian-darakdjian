@@ -1,8 +1,8 @@
 import Publifer from "../../assets/publifer.webp";
-import Manduca from "../../assets/manduca-logo.webp";
+import Manduca from "../../assets/manduca-logo.avif";
 import GIED from "../../assets/gied.png";
-import AlmangoLogo from "../../components/almangoLogo";
-import NuriaIturriozLogo from "../../components/nuriaIturriozLogo";
+import AlmangoLogo from "../../assets/almango.avif";
+import NuriaIturriozLogo from "../../assets/NuriaLogo.ok_.avif";
 import { useTranslation } from "react-i18next";
 import { t } from "i18next";
 import { useEffect, useRef } from "react";
@@ -45,8 +45,10 @@ const WorkCard = ({ title, description, image, link, inProgress = false }: WorkC
             className="rounded-md border-4 border-black w-full h-60 object-contain mb-3 p-2 bg-white"
           />
         ) : (
-          <div className="rounded-md border-4 border-black w-full h-60 flex items-center justify-center mb-3 bg-white">
-            {image}
+          <div className="rounded-md border-4 border-black w-full h-60 flex items-center justify-center mb-3 bg-white p-4">
+            <div className="max-h-full max-w-full flex items-center justify-center">
+              {image}
+            </div>
           </div>
         )}
 
@@ -83,6 +85,8 @@ const WorkCard = ({ title, description, image, link, inProgress = false }: WorkC
       <p className="text-black font-medium mt-2">{description}</p>
       <a
         href={link}
+        target="_blank"
+        rel="noopener noreferrer"
         className="inline-block mt-4 bg-red-500 text-white font-bold px-4 py-2 rounded-full shadow-sm hover:bg-red-600 transition"
       >
         {t("viewSite")}
@@ -104,13 +108,13 @@ const Work = () => {
     {
       title: "Almango",
       description: t("almangoDesc"),
-      image: <AlmangoLogo />,
+      image: AlmangoLogo,
       link: "https://www.almango.com.ar/",
     },
     {
       title: "Nuria Iturrioz",
       description: t("nuriaDesc"),
-      image: <NuriaIturriozLogo />,
+      image: NuriaIturriozLogo,
       link: "https://nuriaiturrioz.com/",
     },
     {
