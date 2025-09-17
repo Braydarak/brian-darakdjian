@@ -4,12 +4,11 @@ const Contact = () => {
 
 
   return (
-    <div className="justify-center flex h-screen items-center w-screen text-white" id="contact">
-
+    <section className="justify-center flex items-center w-screen text-white mb-10" id="contact">
       <div className="w-full h-full justify-center contents">
        <ContactForm />
       </div>
-    </div>
+    </section>
   );
 };
 

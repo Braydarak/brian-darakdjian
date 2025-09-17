@@ -5,7 +5,7 @@ import Contact from "../contact";
 const Home = () => {
 
   return (
-    <main className="w-full h-full flex flex-col ml-0 md:ml-5 md:items-center justify-center">
+    <main className="w-full h-full flex flex-col justify-center">
       <Hero />
       <Work />
       <Contact />

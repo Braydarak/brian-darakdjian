@@ -7,8 +7,6 @@ html {
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
-
 
 @font-face {
   font-family: "Raleway", sans-serif;
@@ -29,4 +27,44 @@ body {
   justify-content: center;
   font-family: "IBM Plex Mono", monospace;
   overflow-x: hidden;
+}
+
+/* Scrollbar personalizada estilo Los Simpsons */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Ocultar las flechas de la barra de scroll */
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background: #e0f2fe; /* Color de fondo del sitio (sky-200) */
+  border-radius: 15px;
+  border: 2px solid #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00a59e; /* Color del header */
+  border-radius: 15px;
+  border: 2px solid #000;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #29BCB3; /* Color más claro al hover */
+  transform: scale(1.1);
+}
+
+::-webkit-scrollbar-corner {
+  background: #e0f2fe;
+  border: 2px solid #000;
+  border-radius: 15px;
+}
+
+/* Para Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #00a59e #e0f2fe;
 }

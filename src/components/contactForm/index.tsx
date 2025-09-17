@@ -72,7 +72,7 @@ const ContactForm = () => {
     return (
       <div className="bg-[#29BCB3] rounded-xl shadow-lg p-6 sm:p-8 max-w-lg mx-auto text-center select-none">
         <h2 className="text-2xl sm:text-3xl font-bold text-yellow-400 mb-4 font-RockSalt">
-          🎉 ¡Woo-hoo! ¡Mensaje enviado! 🎉
+          ¡Woo-hoo! ¡Mensaje enviado! 
         </h2>
         <p className="text-white mb-6 font-raleway text-base sm:text-lg">
           Como diría Bart: "¡Ay, caramba! Tu mensaje llegó perfectamente"
@@ -81,7 +81,7 @@ const ContactForm = () => {
           onClick={() => navigate("/")}
           className="bg-yellow-400 text-[#004d4b] font-bold py-3 px-4 sm:px-6 rounded-full shadow-lg hover:bg-yellow-300 transition-colors duration-300 font-raleway text-sm sm:text-base"
         >
-          🏠 Volver al inicio
+          Volver al inicio
         </button>
       </div>
     );
@@ -119,7 +119,7 @@ const ContactForm = () => {
         className="bg-[#00a59e] w-full p-6 sm:p-8 rounded-xl shadow-2xl font-raleway"
       >
         <h3 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-yellow-400 font-RockSalt text-center select-none drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">
-             🍩 {t("contactFormTitle")} 🍩
+            {t("contactFormTitle")}
           </h3>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6">

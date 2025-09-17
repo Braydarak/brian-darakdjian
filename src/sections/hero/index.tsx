@@ -8,7 +8,7 @@ const Hero = () => {
   
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden z-10 px-4">
+    <section className="w-full min-h-screen flex items-center justify-center overflow-hidden px-4 mt-10">
       <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 items-center">
         {/* Text Section */}
         <div className="flex flex-col gap-4 sm:gap-6 text-black mt-4 md:mt-0 order-2 md:order-1">

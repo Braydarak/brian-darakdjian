@@ -5,8 +5,8 @@ import LinkedInLogo from "../linkedInLogo";
 const Footer = () => {
     const { t } = useTranslation();
   return (
-      <footer className="bg-[#00887f] text-yellow-400 font-comic-sans flex items-center md:justify-between justify-center px-10 py-6 container mx-auto shadow-inner select-none min-h-[80px]">
-          <div className="text-white text-xs font-semibold opacity-90 select-text hidden md:block">
+      <footer className="bg-[#00887f] text-yellow-400 font-comic-sans flex items-center lg:justify-between justify-center px-4 sm:px-6 lg:px-10 py-6 w-full shadow-inner select-none min-h-[80px]">
+          <div className="text-white text-xs font-semibold opacity-90 select-text hidden lg:block">
                       {t("WebDevelopBy")} Brian Darakdjian
               
       </div>

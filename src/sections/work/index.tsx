@@ -181,7 +181,7 @@ const Work = () => {
   ];
 
   return (
-    <div className="relative w-full py-16 sm:py-20 lg:py-24 px-4 sm:px-6" id="work">
+    <section className="w-full py-16 sm:py-20 lg:py-24 px-4 sm:px-6" id="work">
       <div className="text-center mb-12 sm:mb-16">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-RockSalt font-bold text-yellow-400 drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">
           {t("headerWork")}
@@ -203,7 +203,7 @@ const Work = () => {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
