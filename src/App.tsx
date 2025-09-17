@@ -35,7 +35,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <BackgroundClouds />
-      <div className="w-full flex flex-col ml-0 md:ml-5 md:items-center justify-center relative z-10">
+      <div className="w-full flex flex-col md:items-center justify-center relative z-10">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />

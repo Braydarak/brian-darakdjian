@@ -9,21 +9,21 @@ const Hero = () => {
 
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden z-10 px-4">
-      <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 items-center">
         {/* Text Section */}
-        <div className="flex flex-col gap-6 text-black mt-4 md:mt-0">
-          <h1 className="text-yellow-400 font-RockSalt drop-shadow-[2px_2px_0_rgba(0,0,0,1)] text-center md:text-left uppercase text-4xl sm:text-6xl md:text-7xl font-bold text-pretty tracking-widest leading-relaxed md:leading-[1.5] mt-[4rem] sm:mt-[4rem]">
+        <div className="flex flex-col gap-4 sm:gap-6 text-black mt-4 md:mt-0 order-2 md:order-1">
+          <h1 className="text-yellow-400 font-RockSalt drop-shadow-[2px_2px_0_rgba(0,0,0,1)] text-center md:text-left uppercase text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-pretty tracking-wide sm:tracking-widest leading-tight sm:leading-relaxed md:leading-[1.2] lg:leading-[1.3] xl:leading-[1.5] mt-8 sm:mt-12 md:mt-0">
             Brian Darakdjian
           </h1>
-          <p className="font-RockSalt text-2xl sm:text-3xl text-black/80 text-center md:text-left">
+          <p className="font-RockSalt text-xl sm:text-2xl md:text-3xl text-black/80 text-center md:text-left">
             {t("developer")} <span className="text-secondary font-bold">{t("web")}</span>
           </p>
-          <div className="mt-4 text-center md:text-left">
+          <div className="mt-6 text-center md:text-left">
             <a
               href={CV}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-secondary text-white px-[15%] py-4 rounded-full shadow-md hover:scale-105 transition-transform duration-300"
+              className="inline-block bg-secondary text-white px-6 sm:px-8 md:px-12 py-3 sm:py-4 rounded-full shadow-md hover:scale-105 transition-transform duration-300 text-sm sm:text-base font-semibold"
             >
               {t("moreAbout")}
             </a>
@@ -31,11 +31,11 @@ const Hero = () => {
         </div>
 
         {/* Image Section */}
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center order-1 md:order-2">
           <img
             src={Brian}
             alt="Foto de Brian"
-            className="w-[300px] sm:w-[350px] md:w-[400px] rounded-full shadow-xl border-4 border-white bg-white"
+            className="w-[250px] sm:w-[300px] md:w-[350px] lg:w-[400px] rounded-full shadow-xl border-4 border-white bg-white"
           />
         </div>
       </div>
