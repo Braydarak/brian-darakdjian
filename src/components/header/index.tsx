@@ -21,9 +21,9 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full bg-[#00a59e] rounded-b-lg shadow-md z-50">
-      <div className="max-w-7xl mx-auto flex items-center md:justify-between justify-end p-4 md:p-6">
+      <div className="max-w-7xl mx-auto flex items-center lg:justify-between justify-end p-4 lg:p-6">
         {/* Botones mobile */}
-        <div className="md:hidden flex items-center space-x-4">
+        <div className="lg:hidden flex items-center space-x-4">
           <button
             onClick={changeLanguage}
             className={`p-2 rounded-full ${
@@ -56,7 +56,7 @@ const Header = () => {
         </div>
 
         {/* Menú desktop */}
-        <nav className="hidden md:flex space-x-10 items-center text-white font-raleway font-semibold text-lg">
+        <nav className="hidden lg:flex space-x-10 items-center text-white font-raleway font-semibold text-lg">
           <a
             href="#top"
             className="hover:text-[#29BCB3] transition-colors duration-200 cursor-pointer"
@@ -96,7 +96,7 @@ const Header = () => {
         </nav>
 
         {/* Redes y cambio idioma desktop */}
-        <div className="hidden md:flex items-center space-x-6">
+        <div className="hidden lg:flex items-center space-x-6">
           <Link
             to={"https://github.com/Braydarak"}
             className="hover:text-[#29BCB3] transition-colors duration-200"
@@ -129,7 +129,7 @@ const Header = () => {
 
       {/* Menú desplegable móvil */}
       {isMenuOpen && (
-        <nav className="md:hidden bg-[#00a59e] border-t border-turquesa-65 shadow-inner rounded-b-lg flex flex-col items-center py-6 space-y-6 text-white font-raleway font-semibold text-lg z-40">
+        <nav className="lg:hidden bg-[#00a59e] border-t border-turquesa-65 shadow-inner rounded-b-lg flex flex-col items-center py-6 space-y-6 text-white font-raleway font-semibold text-lg z-40">
           <a
             href="#top"
             onClick={toggleMenu}

@@ -70,30 +70,59 @@ const ContactForm = () => {
 
   if (isSubmitted) {
     return (
-      <div className="bg-[#29BCB3] rounded-xl shadow-lg p-8 max-w-lg mx-auto text-center select-none ">
-        <h2 className="text-3xl font-bold text-yellow-400 mb-6 font-comic-sans">
-          ¡Gracias por comunicarte conmigo!
+      <div className="bg-[#29BCB3] rounded-xl shadow-lg p-6 sm:p-8 max-w-lg mx-auto text-center select-none">
+        <h2 className="text-2xl sm:text-3xl font-bold text-yellow-400 mb-4 font-RockSalt">
+          🎉 ¡Woo-hoo! ¡Mensaje enviado! 🎉
         </h2>
+        <p className="text-white mb-6 font-raleway text-base sm:text-lg">
+          Como diría Bart: "¡Ay, caramba! Tu mensaje llegó perfectamente"
+        </p>
         <button
           onClick={() => navigate("/")}
-          className="bg-yellow-400 text-[#004d4b] font-bold py-3 px-6 rounded-full shadow-lg hover:bg-yellow-300 transition-colors duration-300 font-comic-sans"
+          className="bg-yellow-400 text-[#004d4b] font-bold py-3 px-4 sm:px-6 rounded-full shadow-lg hover:bg-yellow-300 transition-colors duration-300 font-raleway text-sm sm:text-base"
         >
-          Volver al inicio
+          🏠 Volver al inicio
         </button>
       </div>
     );
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="bg-[#00a59e] md:w-[60%] w-[90%] mx-auto p-8 rounded-xl shadow-2xl font-raleway"
-    >
-      <h2 className="text-4xl font-bold mb-8 text-yellow-400 font-RockSalt drop-shadow-[2px_2px_0_rgba(0,0,0,1)] text-center select-none">
-        {t("contactTitle")}
-      </h2>
+    <div className="w-[95%] max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {/* Contact Info Section */}
+      <div className="bg-[#00a59e] rounded-xl shadow-lg p-6 sm:p-8 text-center flex flex-col justify-center">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 text-yellow-400 font-RockSalt drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">
+          {t("contactTitle")}
+        </h2>
+        <p className="text-base sm:text-lg text-yellow-300 mb-6 lg:mb-8 font-raleway italic">
+          {t("contactSubtitle")}
+        </p>
+        <div className="flex flex-col justify-center items-center gap-6 sm:gap-8 text-white font-bold text-lg sm:text-xl">
+           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
+             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 sm:h-7 sm:w-7 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+             </svg>
+             <span className="font-raleway text-lg sm:text-xl break-all">briandarakdjian@gmail.com</span>
+           </div>
+           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
+             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 sm:h-7 sm:w-7 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+             </svg>
+             <span className="font-raleway text-lg sm:text-xl">+34 622 655 789</span>
+           </div>
+         </div>
+      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      {/* Contact Form */}
+      <form
+        onSubmit={handleSubmit}
+        className="bg-[#00a59e] w-full p-6 sm:p-8 rounded-xl shadow-2xl font-raleway"
+      >
+        <h3 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-yellow-400 font-RockSalt text-center select-none drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">
+             🍩 {t("contactFormTitle")} 🍩
+          </h3>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
         <input
           type="text"
           name="name"
@@ -142,6 +171,7 @@ const ContactForm = () => {
         </button>
       </div>
     </form>
+    </div>
   );
 };
 
