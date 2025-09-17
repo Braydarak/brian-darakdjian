@@ -128,31 +128,46 @@ const Header = () => {
       </div>
 
       {/* Menú desplegable móvil */}
-      {isMenuOpen && (
-        <nav className="lg:hidden bg-[#00a59e] border-t border-turquesa-65 shadow-inner rounded-b-lg flex flex-col items-center py-6 space-y-6 text-white font-raleway font-semibold text-lg z-40">
+      <nav className={`lg:hidden bg-[#00a59e] border-t border-turquesa-65 shadow-inner rounded-b-lg flex flex-col items-center text-white font-raleway font-semibold text-lg z-40 overflow-hidden transition-all duration-500 ease-in-out ${
+        isMenuOpen 
+          ? 'max-h-96 py-6 space-y-6 opacity-100' 
+          : 'max-h-0 py-0 space-y-0 opacity-0'
+      }`}>
           <a
             href="#top"
             onClick={toggleMenu}
-            className="hover:text-[#29BCB3] transition-colors duration-200"
+            className={`hover:text-[#29BCB3] transition-all duration-300 transform ${
+              isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+            }`}
+            style={{ transitionDelay: isMenuOpen ? '100ms' : '0ms' }}
           >
             {t("headerHome")}
           </a>
           <a
             href="#work"
             onClick={toggleMenu}
-            className="hover:text-[#29BCB3] transition-colors duration-200"
+            className={`hover:text-[#29BCB3] transition-all duration-300 transform ${
+              isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+            }`}
+            style={{ transitionDelay: isMenuOpen ? '200ms' : '0ms' }}
           >
             {t("headerWork")}
           </a>
           <a
             href="#contact"
             onClick={toggleMenu}
-            className="hover:text-[#29BCB3] transition-colors duration-200"
+            className={`hover:text-[#29BCB3] transition-all duration-300 transform ${
+              isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+            }`}
+            style={{ transitionDelay: isMenuOpen ? '300ms' : '0ms' }}
           >
             {t("headerGetintouch")}
           </a>
 
-          <div className="flex space-x-8 mt-4">
+          <div className={`flex space-x-8 mt-4 transition-all duration-300 transform ${
+            isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+          }`}
+          style={{ transitionDelay: isMenuOpen ? '400ms' : '0ms' }}>
             <Link
               to={"https://github.com/Braydarak"}
               onClick={toggleMenu}
@@ -175,7 +190,6 @@ const Header = () => {
             </Link>
           </div>
         </nav>
-      )}
     </header>
   );
 };
