@@ -8,8 +8,8 @@ const Hero = () => {
   
 
   return (
-    <section className="w-full min-h-screen flex items-center justify-center overflow-hidden px-4 mt-10">
-      <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 items-center">
+    <section className="w-full min-h-screen-safe flex items-center justify-center overflow-hidden px-4 mt-10">
+      <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 mt-32 lg:gap-10 items-center">
         {/* Text Section */}
         <div className="flex flex-col gap-4 sm:gap-6 text-black mt-4 md:mt-0 order-2 md:order-1">
           <h1 className="text-yellow-400 font-RockSalt drop-shadow-[2px_2px_0_rgba(0,0,0,1)] text-center md:text-left uppercase text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-pretty tracking-wide sm:tracking-widest leading-tight sm:leading-relaxed md:leading-[1.2] lg:leading-[1.3] xl:leading-[1.5] mt-8 sm:mt-12 md:mt-0">
