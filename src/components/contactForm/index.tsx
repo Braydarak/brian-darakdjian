@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import emailjs from "emailjs-com";
 import Spinner from "../spinner";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ContactForm = () => {
   const { t } = useTranslation();
@@ -68,6 +72,63 @@ const ContactForm = () => {
     setFormData({ name: "", email: "", comments: "" });
   };
 
+  const rootRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const info = document.querySelector<HTMLElement>(".contact-info");
+      const form = document.querySelector<HTMLElement>(".contact-form");
+
+      if (!info || !form) return;
+
+      const tweenInfo = gsap.fromTo(
+        info,
+        { opacity: 0, x: -120 },
+        { opacity: 1, x: 0, duration: 0.8, ease: "power2.out", paused: true, immediateRender: false }
+      );
+
+      const tweenForm = gsap.fromTo(
+        form,
+        { opacity: 0, x: 120 },
+        { opacity: 1, x: 0, duration: 0.8, ease: "power2.out", paused: true, immediateRender: false }
+      );
+
+      ScrollTrigger.create({
+        trigger: info,
+        start: "top 95%",
+        end: "top 60%",
+        onEnter: () => tweenInfo.play(),
+        onLeave: () => {},
+        onEnterBack: () => tweenInfo.play(),
+        onLeaveBack: () => tweenInfo.reverse(),
+        onRefresh: () => {
+          const rect = info.getBoundingClientRect();
+          const inView = rect.top <= window.innerHeight * 0.95;
+          gsap.set(info, inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -120 });
+        },
+        invalidateOnRefresh: true,
+      });
+
+      ScrollTrigger.create({
+        trigger: form,
+        start: "top 95%",
+        end: "top 60%",
+        onEnter: () => tweenForm.play(),
+        onLeave: () => {},
+        onEnterBack: () => tweenForm.play(),
+        onLeaveBack: () => tweenForm.reverse(),
+        onRefresh: () => {
+          const rect = form.getBoundingClientRect();
+          const inView = rect.top <= window.innerHeight * 0.95;
+          gsap.set(form, inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 120 });
+        },
+        invalidateOnRefresh: true,
+      });
+    }, rootRef);
+
+    return () => ctx.revert();
+  }, []);
+
   if (isSubmitted) {
     return (
       <div className="bg-[#29BCB3] rounded-xl shadow-lg p-6 sm:p-8 max-w-lg mx-auto text-center select-none">
@@ -87,10 +148,11 @@ const ContactForm = () => {
     );
   }
 
+
   return (
-    <div className="w-[95%] max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div ref={rootRef} className="w-[95%] max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
       {/* Contact Info Section */}
-      <div className="bg-[#00a59e] rounded-xl shadow-lg p-6 sm:p-8 text-center flex flex-col justify-center">
+      <div className="contact-info bg-[#00a59e] rounded-xl shadow-lg p-6 sm:p-8 text-center flex flex-col justify-center">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 text-yellow-400 font-RockSalt drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">
           {t("contactTitle")}
         </h2>
@@ -116,7 +178,7 @@ const ContactForm = () => {
       {/* Contact Form */}
       <form
         onSubmit={handleSubmit}
-        className="bg-[#00a59e] w-full p-6 sm:p-8 rounded-xl shadow-2xl font-raleway"
+        className="contact-form bg-[#00a59e] w-full p-6 sm:p-8 rounded-xl shadow-2xl font-raleway"
       >
         <h3 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-yellow-400 font-RockSalt text-center select-none drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">
             {t("contactFormTitle")}

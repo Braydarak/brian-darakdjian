@@ -13,6 +13,9 @@ import { useTranslation } from "react-i18next";
 import { t } from "i18next";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 type WorkCardProps = {
   title: string;
@@ -40,8 +43,7 @@ const WorkCard = ({ title, description, image, link, inProgress = false }: WorkC
 
   return (
     <div
-      className="relative bg-yellow-100 border-4 border-black shadow-md hover:scale-105 transition-transform duration-300 ease-out p-4 sm:p-6 rounded-xl w-full mx-auto flex flex-col h-full"
-      id="work"
+      className="work-card relative bg-yellow-100 border-4 border-black shadow-md hover:scale-105 transition-transform duration-300 ease-out p-4 sm:p-6 rounded-xl w-full mx-auto flex flex-col h-full"
     >
       <div className="relative">
         {typeof image === "string" ? (
@@ -102,6 +104,7 @@ const WorkCard = ({ title, description, image, link, inProgress = false }: WorkC
 };
 
 const Work = () => {
+  const sectionRef = useRef<HTMLElement | null>(null);
   const { t } = useTranslation();
 
   const works = [
@@ -184,8 +187,55 @@ const Work = () => {
 
   ];
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray<HTMLElement>(".work-card");
+
+      cards.forEach((card) => {
+        const fromY = gsap.utils.random(80, 140);
+        const fromRot = gsap.utils.random(-3, 3);
+
+        const tween = gsap.fromTo(
+          card,
+          { opacity: 0, y: fromY, rotate: fromRot },
+          {
+            opacity: 1,
+            y: 0,
+            rotate: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            paused: true,
+            immediateRender: false,
+          }
+        );
+
+        ScrollTrigger.create({
+          trigger: card,
+          start: "top 90%",
+          end: "top 60%",
+          onEnter: () => tween.play(),
+          onLeave: () => {},
+          onEnterBack: () => tween.play(),
+          onLeaveBack: () => tween.reverse(),
+          onRefresh: () => {
+            const rect = card.getBoundingClientRect();
+            const inView = rect.top <= window.innerHeight * 0.9;
+            if (inView) {
+              gsap.set(card, { opacity: 1, y: 0, rotate: 0 });
+            } else {
+              gsap.set(card, { opacity: 0, y: fromY, rotate: fromRot });
+            }
+          },
+          invalidateOnRefresh: true,
+        });
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="w-full py-16 sm:py-20 lg:py-24 px-4 sm:px-6" id="work">
+    <section ref={sectionRef} className="w-full py-16 sm:py-20 lg:py-24 px-4 sm:px-6" id="work">
       <div className="text-center mb-12 sm:mb-16">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-RockSalt font-bold text-yellow-400 drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">
           {t("headerWork")}

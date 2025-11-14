@@ -9,6 +9,7 @@ import { BackgroundClouds } from "../src/components/backgroundClouds";
 import Footer from "./components/footer/index.js";
 
 import Lenis from "@studio-freight/lenis";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const App: React.FC = () => {
   const { i18n, t } = useTranslation();
@@ -22,6 +23,7 @@ const App: React.FC = () => {
     const lenis = new Lenis();
     function raf(time: number) {
       lenis.raf(time);
+      ScrollTrigger.update();
       requestAnimationFrame(raf);
     }
 

@@ -1,9 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import GithubLogo from "../githubLogo";
 import LinkedInLogo from "../linkedInLogo";
 import TranslateLogo from "../translateLogo";
 import { useTranslation } from "react-i18next";
+import { gsap } from "gsap";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,10 +14,46 @@ const Header = () => {
     setIsMenuOpen((prev) => !prev);
   };
 
-  const changeLanguage = () => {
+  const changeLanguage = (e?: React.MouseEvent<HTMLButtonElement>) => {
     const currentLanguage = i18n.language;
     const newLanguage = currentLanguage === "en" ? "es" : "en";
     i18n.changeLanguage(newLanguage);
+
+    const svg = e?.currentTarget.querySelector("svg");
+    if (svg) {
+      gsap.timeline()
+        .to(svg, { rotate: 12, scale: 1.08, duration: 0.12, ease: "power2.out", transformOrigin: "50% 50%" })
+        .to(svg, { rotate: -12, duration: 0.12, ease: "power2.inOut" })
+        .to(svg, { rotate: 0, scale: 1, duration: 0.18, ease: "back.out(2)" });
+    }
+  };
+
+  const onIconEnter = (e: React.MouseEvent<HTMLAnchorElement | HTMLSpanElement>) => {
+    const svg = (e.currentTarget as HTMLElement).querySelector("svg");
+    if (svg) {
+      gsap.to(svg, { y: -4, rotate: 8, scale: 1.08, duration: 0.2, ease: "power2.out", transformOrigin: "50% 50%" });
+    }
+  };
+
+  const onIconLeave = (e: React.MouseEvent<HTMLAnchorElement | HTMLSpanElement>) => {
+    const svg = (e.currentTarget as HTMLElement).querySelector("svg");
+    if (svg) {
+      gsap.to(svg, { y: 0, rotate: 0, scale: 1, duration: 0.2, ease: "power2.inOut" });
+    }
+  };
+
+  const onNavEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const underline = e.currentTarget.querySelector<HTMLElement>(".nav-underline");
+    if (underline) {
+      gsap.to(underline, { opacity: 1, scaleX: 1, duration: 0.2, ease: "power2.out", transformOrigin: "left center" });
+    }
+  };
+
+  const onNavLeave = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const underline = e.currentTarget.querySelector<HTMLElement>(".nav-underline");
+    if (underline) {
+      gsap.to(underline, { opacity: 0, scaleX: 0, duration: 0.2, ease: "power2.inOut" });
+    }
   };
 
   return (
@@ -25,7 +62,7 @@ const Header = () => {
         {/* Botones mobile */}
         <div className="lg:hidden flex items-center space-x-4">
           <button
-            onClick={changeLanguage}
+            onClick={(e) => changeLanguage(e)}
             className={`p-2 rounded-full ${
               i18n.language === "en" ? "bg-purple-400" : "bg-turquesa-80"
             } hover:bg-turquesa-65 transition-colors shadow-md`}
@@ -59,17 +96,20 @@ const Header = () => {
         <nav className="hidden lg:flex space-x-10 items-center text-white font-raleway font-semibold text-lg">
           <a
             href="#top"
-            className="hover:text-[#29BCB3] transition-colors duration-200 cursor-pointer"
+            className="relative inline-block cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
               document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
             }}
+            onMouseEnter={onNavEnter}
+            onMouseLeave={onNavLeave}
           >
-            {t("headerHome")}
+            <span className="inline-block">{t("headerHome")}</span>
+            <span className="nav-underline block h-[2px] bg-yellow-400 opacity-0 transform scale-x-0 origin-left mt-1 w-full"></span>
           </a>
           <a
             href="#work"
-            className="hover:text-[#29BCB3] transition-colors duration-200 cursor-pointer"
+            className="relative inline-block cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
               const target = document.querySelector("#work");
@@ -77,12 +117,15 @@ const Header = () => {
                 target.scrollIntoView({ behavior: "smooth" });
               }
             }}
+            onMouseEnter={onNavEnter}
+            onMouseLeave={onNavLeave}
           >
-            {t("headerWork")}
+            <span className="inline-block">{t("headerWork")}</span>
+            <span className="nav-underline block h-[2px] bg-yellow-400 opacity-0 transform scale-x-0 origin-left mt-1 w-full"></span>
           </a>
           <a
             href="#contact"
-            className="hover:text-[#29BCB3] transition-colors duration-200 cursor-pointer"
+            className="relative inline-block cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
               const target = document.querySelector("#contact");
@@ -90,8 +133,11 @@ const Header = () => {
                 target.scrollIntoView({ behavior: "smooth" });
               }
             }}
+            onMouseEnter={onNavEnter}
+            onMouseLeave={onNavLeave}
           >
-            {t("headerGetintouch")}
+            <span className="inline-block">{t("headerGetintouch")}</span>
+            <span className="nav-underline block h-[2px] bg-yellow-400 opacity-0 transform scale-x-0 origin-left mt-1 w-full"></span>
           </a>
         </nav>
 
@@ -103,6 +149,8 @@ const Header = () => {
             aria-label="GitHub"
             rel="noopener noreferrer"
             target="_blank"
+            onMouseEnter={onIconEnter}
+            onMouseLeave={onIconLeave}
           >
             <GithubLogo />
           </Link>
@@ -112,11 +160,13 @@ const Header = () => {
             aria-label="LinkedIn"
             rel="noopener noreferrer"
             target="_blank"
+            onMouseEnter={onIconEnter}
+            onMouseLeave={onIconLeave}
           >
             <LinkedInLogo />
           </Link>
           <button
-            onClick={changeLanguage}
+            onClick={(e) => changeLanguage(e)}
             className={`p-2 rounded-full ${
               i18n.language === "en" ? " bg-[#2f64d6]" : "bg-turquesa-80"
             } hover:bg-turquesa-65 transition-colors shadow-md`}
@@ -136,32 +186,41 @@ const Header = () => {
           <a
             href="#top"
             onClick={toggleMenu}
-            className={`hover:text-[#29BCB3] transition-all duration-300 transform ${
+            className={`relative inline-block transition-all duration-300 transform ${
               isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`}
             style={{ transitionDelay: isMenuOpen ? '100ms' : '0ms' }}
+            onMouseEnter={onNavEnter}
+            onMouseLeave={onNavLeave}
           >
-            {t("headerHome")}
+            <span className="inline-block">{t("headerHome")}</span>
+            <span className="nav-underline block h-[2px] bg-yellow-400 opacity-0 transform scale-x-0 origin-left mt-1 w-full"></span>
           </a>
           <a
             href="#work"
             onClick={toggleMenu}
-            className={`hover:text-[#29BCB3] transition-all duration-300 transform ${
+            className={`relative inline-block transition-all duration-300 transform ${
               isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`}
             style={{ transitionDelay: isMenuOpen ? '200ms' : '0ms' }}
+            onMouseEnter={onNavEnter}
+            onMouseLeave={onNavLeave}
           >
-            {t("headerWork")}
+            <span className="inline-block">{t("headerWork")}</span>
+            <span className="nav-underline block h-[2px] bg-yellow-400 opacity-0 transform scale-x-0 origin-left mt-1 w-full"></span>
           </a>
           <a
             href="#contact"
             onClick={toggleMenu}
-            className={`hover:text-[#29BCB3] transition-all duration-300 transform ${
+            className={`relative inline-block transition-all duration-300 transform ${
               isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`}
             style={{ transitionDelay: isMenuOpen ? '300ms' : '0ms' }}
+            onMouseEnter={onNavEnter}
+            onMouseLeave={onNavLeave}
           >
-            {t("headerGetintouch")}
+            <span className="inline-block">{t("headerGetintouch")}</span>
+            <span className="nav-underline block h-[2px] bg-yellow-400 opacity-0 transform scale-x-0 origin-left mt-1 w-full"></span>
           </a>
 
           <div className={`flex space-x-8 mt-4 transition-all duration-300 transform ${
@@ -175,6 +234,8 @@ const Header = () => {
               aria-label="GitHub"
               rel="noopener noreferrer"
               target="_blank"
+              onMouseEnter={onIconEnter}
+              onMouseLeave={onIconLeave}
             >
               <GithubLogo />
             </Link>
@@ -185,6 +246,8 @@ const Header = () => {
               aria-label="LinkedIn"
               rel="noopener noreferrer"
               target="_blank"
+              onMouseEnter={onIconEnter}
+              onMouseLeave={onIconLeave}
             >
               <LinkedInLogo />
             </Link>
