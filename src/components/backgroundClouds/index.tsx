@@ -1,79 +1,37 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import cloud from "../../assets/cloud.svg";
 
-gsap.registerPlugin(ScrollTrigger);
+// Nubes del cielo de fondo: un vaivén horizontal y un parallax con el scroll.
+// Cada nube tiene sus propios keyframes con valores fijos (sin variables CSS),
+// así el navegador las puede animar enteras en la GPU.
+const CLOUDS = [
+  { className: "hidden md:block top-10 left-10 w-60 opacity-80", dx: 30, py: -100, dur: 6 },
+  { className: "hidden md:block top-32 right-0 w-72 opacity-70", dx: -40, py: -150, dur: 8 },
+  { className: "hidden lg:block top-64 left-1/3 w-80 opacity-60", dx: 50, py: -120, dur: 10 },
+  { className: "hidden lg:block top-[500px] right-[20%] w-64 opacity-75", dx: -30, py: -90, dur: 7 },
+  { className: "hidden lg:block top-[700px] left-[5%] w-56 opacity-65", dx: 20, py: -60, dur: 9 },
+  { className: "sm:hidden top-24 -left-16 w-36 opacity-70", dx: 14, py: -40, dur: 8 },
+];
 
-export const BackgroundClouds = () => {
-  const cloud1 = useRef<HTMLImageElement>(null);
-  const cloud2 = useRef<HTMLImageElement>(null);
-  const cloud3 = useRef<HTMLImageElement>(null);
-  const cloud4 = useRef<HTMLImageElement>(null);
-  const cloud5 = useRef<HTMLImageElement>(null);
+const KEYFRAMES = CLOUDS.map(
+  (c, i) => `
+@keyframes cloud-drift-${i} { to { transform: translate3d(${c.dx}px, 0, 0); } }
+@keyframes cloud-parallax-${i} { to { transform: translate3d(0, ${c.py}px, 0); } }
+.cloud-drift-${i} { animation: cloud-drift-${i} ${c.dur}s ease-in-out infinite alternate; }
+@supports (animation-timeline: scroll()) {
+  .cloud-parallax-${i} { animation: cloud-parallax-${i} linear both; animation-timeline: scroll(root); }
+}`
+).join("");
 
-  useEffect(() => {
-    const clouds = [
-      { ref: cloud1, x: 30, y: -100, duration: 6 },
-      { ref: cloud2, x: -40, y: -150, duration: 8 },
-      { ref: cloud3, x: 50, y: -120, duration: 10 },
-      { ref: cloud4, x: -30, y: -90, duration: 7 },
-      { ref: cloud5, x: 20, y: -60, duration: 9 },
-    ];
-
-    clouds.forEach(({ ref, x, y, duration }) => {
-      gsap.to(ref.current, {
-        x,
-        duration,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-
-      gsap.to(ref.current, {
-        y,
-        scrollTrigger: {
-          trigger: document.body,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 1,
-        },
-      });
-    });
-  }, []);
-
-  return (
-    <div className="fixed inset-0 z-0 overflow-hidden bg-sky-200 pointer-events-none">
-      <img
-        ref={cloud1}
-        src={cloud}
-        alt="cloud1"
-        className="hidden md:block absolute top-10 left-10 w-60 opacity-80"
-      />
-      <img
-        ref={cloud2}
-        src={cloud}
-        alt="cloud2"
-        className="hidden md:block absolute top-32 right-0 w-72 opacity-70"
-      />
-      <img
-        ref={cloud3}
-        src={cloud}
-        alt="cloud3"
-        className="absolute top-64 left-1/3 w-80 opacity-60"
-      />
-      <img
-        ref={cloud4}
-        src={cloud}
-        alt="cloud4"
-        className="absolute top-[500px] right-[20%] w-64 opacity-75"
-      />
-      <img
-        ref={cloud5}
-        src={cloud}
-        alt="cloud5"
-        className="absolute top-[700px] left-[5%] w-56 opacity-65"
-      />
-    </div>
-  );
-};
+export const BackgroundClouds = () => (
+  <div
+    className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-sky-200"
+    aria-hidden="true"
+  >
+    <style>{`@media (prefers-reduced-motion: no-preference) {${KEYFRAMES}}`}</style>
+    {CLOUDS.map((c, i) => (
+      <div key={c.className} className={`cloud-parallax-${i} absolute ${c.className}`}>
+        <img src={cloud} alt="" className={`cloud-drift-${i} w-full`} />
+      </div>
+    ))}
+  </div>
+);
