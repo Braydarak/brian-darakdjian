@@ -22,7 +22,7 @@ const SimpsonsNav = () => {
   const [active, setActive] = useState<SimpsonsSection>("home");
   const progressRef = useRef<HTMLDivElement>(null);
   useScrollProgress(progressRef);
-  const menu = useMobileMenu(480, 1024);
+  const menu = useMobileMenu(400, 1024);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
