@@ -13,9 +13,9 @@
   "homeDescription": "Me especializo en construir aplicaciones web modernas y responsivas con React, TypeScript y Tailwind. Con una pasión por el código limpio y un diseño intuitivo, convierto ideas en experiencias digitales refinadas.",
   "homeResume": "Mirá mi currículum →",
   "homeWorked": "Trabajé con",
-  "emailError":"Debe completar el formulario con un email valido.",
-  "moreAbout":"Conocé más sobre mí",
-  "developer":"Desarrollador",
+  "emailError": "Debe completar el formulario con un email valido.",
+  "moreAbout": "Conocé más sobre mí",
+  "developer": "Desarrollador",
   "web": "Web",
   "worksSubtitle": "Algunos proyectos que salieron desde la Planta Nuclear",
   "viewSite": "Ver sitio",
@@ -28,8 +28,662 @@
   "inebalDesc": "Empresa de instalaciones eléctricas y sistemas de refrigeración",
   "bonapedraDesc": "Empresa especializada en servicios de excavación",
   "managementDesc": "Gestión y desarrollo inmobiliario en Mallorca",
-  "tamdDesc": "Productos cosméticos y de belleza",
-  "manDesc": "Cosmética deportiva especializada para atletas",
-  "WebDevelopBy":"Web desarrollada y diseñada por",
-  "inProgress": "En Desarrollo"
+  "malvonDesc": "Ecosistema de 9 aplicaciones internas para la cadena de empanadas Malvón",
+  "WebDevelopBy": "Web desarrollada y diseñada por",
+  "inProgress": "En Desarrollo",
+  "matrix": {
+    "nav": {
+      "home": "inicio",
+      "work": "proyectos",
+      "contact": "contacto",
+      "exit": "Cambiar de realidad",
+      "menu": "Menú",
+      "here": "estás acá",
+      "pill": "¿Otra realidad? Tomá la pastilla:"
+    },
+    "intro": {
+      "skip": "Click o cualquier tecla para saltar"
+    },
+    "hero": {
+      "prompt": "whoami",
+      "role": "Desarrollador Web",
+      "stack": "stack",
+      "choose": "Elegí tu pastilla:",
+      "redPill": "Ver proyectos",
+      "bluePill": "Descargar CV",
+      "scroll": "Seguí al conejo blanco",
+      "photoHint": "Pasá el mouse para salir de la Matrix",
+      "stats": {
+        "done": "entregados",
+        "dev": "en desarrollo"
+      }
+    },
+    "work": {
+      "prompt": "ls ./proyectos",
+      "title": "Proyectos",
+      "subtitle": "Sitios que salieron de la Matrix y siguen corriendo en el mundo real.",
+      "open": "Abrir sitio",
+      "tabs": {
+        "past": "Anteriores",
+        "live": "En producción",
+        "dev": "En desarrollo"
+      },
+      "tabInfo": {
+        "past": "Empresas y proyectos con los que trabajé antes.",
+        "live": "Sitios que están en vivo ahora mismo.",
+        "dev": "Lo que estoy compilando en este momento."
+      },
+      "badge": {
+        "past": "ARCHIVADO",
+        "live": "ONLINE",
+        "dev": "COMPILANDO"
+      },
+      "watch": "Ver la película"
+    },
+    "contact": {
+      "prompt": "./contacto.sh",
+      "title": "Contacto",
+      "subtitle": "¿Tenés un proyecto en mente? Mandame un mensaje y te respondo por un canal seguro.",
+      "name": "nombre",
+      "email": "email",
+      "message": "mensaje",
+      "namePlaceholder": "Tu nombre",
+      "emailPlaceholder": "tu@email.com",
+      "messagePlaceholder": "Contame en qué puedo ayudarte",
+      "send": "Enviar mensaje",
+      "sending": "Transmitiendo",
+      "success": "Mensaje recibido. Te respondo lo antes posible.",
+      "sendAnother": "Enviar otro mensaje",
+      "errorRequired": "Completá todos los campos.",
+      "errorEmail": "El email no parece válido.",
+      "errorSend": "No se pudo enviar el mensaje. Probá de nuevo o escribime por email.",
+      "direct": "Canales directos"
+    },
+    "footer": {
+      "rights": "Todos los derechos reservados."
+    }
+  },
+  "starWars": {
+    "nav": {
+      "home": "Base",
+      "work": "Flota",
+      "contact": "Transmisión",
+      "exit": "Saltar al hiperespacio",
+      "menu": "Menú",
+      "menuTitle": "Sistema de navegación",
+      "menuFooter": "Que la fuerza te acompañe"
+    },
+    "intro": {
+      "skip": "Click o cualquier tecla para saltar"
+    },
+    "hero": {
+      "kicker": "Transmisión entrante",
+      "role": "Caballero del Frontend",
+      "rank": "Rango",
+      "stack": "Arsenal",
+      "stats": {
+        "done": "misiones cumplidas",
+        "dev": "en el astillero"
+      },
+      "scroll": "Que el scroll te acompañe",
+      "photoHint": "Pasá el mouse para apagar el holograma",
+      "ctaWork": "Ver la flota",
+      "ctaCv": "Descargar CV"
+    },
+    "work": {
+      "kicker": "Registro de la flota",
+      "title": "Proyectos",
+      "subtitle": "Naves que ya surcan la galaxia y otras que siguen en el astillero.",
+      "open": "Abordar",
+      "tabs": {
+        "past": "Misiones anteriores",
+        "live": "En servicio",
+        "dev": "En el astillero"
+      },
+      "tabInfo": {
+        "past": "Flotas y bases con las que volé antes.",
+        "live": "Naves que hoy surcan la galaxia.",
+        "dev": "La nave que estoy construyendo ahora."
+      },
+      "badge": {
+        "past": "MISIÓN CUMPLIDA",
+        "live": "EN SERVICIO",
+        "dev": "EN CONSTRUCCIÓN"
+      },
+      "watch": "Ver el episodio"
+    },
+    "contact": {
+      "kicker": "Canal seguro",
+      "title": "Enviar transmisión",
+      "subtitle": "¿Tenés una misión para mí? Mandá tu mensaje a la base y te respondo antes de que termine el salto al hiperespacio.",
+      "name": "Nombre del piloto",
+      "email": "Frecuencia (email)",
+      "message": "Mensaje",
+      "namePlaceholder": "Tu nombre",
+      "emailPlaceholder": "tu@email.com",
+      "messagePlaceholder": "Contame tu misión",
+      "send": "Transmitir",
+      "sending": "Transmitiendo",
+      "success": "Transmisión recibida en la base. Te respondo lo antes posible.",
+      "sendAnother": "Enviar otra transmisión",
+      "errorRequired": "Completá todos los campos.",
+      "errorEmail": "Esa frecuencia no parece válida.",
+      "errorSend": "La transmisión no llegó. Probá de nuevo o escribime por email.",
+      "direct": "Frecuencias directas"
+    },
+    "footer": {
+      "rights": "Todos los derechos reservados.",
+      "force": "Que el código te acompañe."
+    }
+  },
+  "simpsons": {
+    "nav": {
+      "home": "Inicio",
+      "work": "Trabajos",
+      "contact": "Contacto",
+      "exit": "Cambiar de canal",
+      "menu": "Menú",
+      "menuTitle": "Elegí un canal",
+      "onAir": "Al aire"
+    },
+    "intro": {
+      "skip": "Click o cualquier tecla para saltar"
+    },
+    "hero": {
+      "kicker": "En vivo desde Springfield",
+      "role": "Desarrollador Web",
+      "stack": "Mi stack",
+      "stats": {
+        "done": "entregados",
+        "dev": "en la planta"
+      },
+      "ctaWork": "Ver mis trabajos",
+      "ctaCv": "Descargar CV",
+      "tvHint": "Tocá la tele para cambiar de canal",
+      "scroll": "Bajá, que hay más"
+    },
+    "work": {
+      "title": "Mis Trabajos",
+      "subtitle": "Algunos proyectos que salieron desde la Planta Nuclear",
+      "open": "Ver sitio",
+      "tabs": {
+        "past": "Temporadas anteriores",
+        "live": "Al aire",
+        "dev": "En obra"
+      },
+      "tabInfo": {
+        "past": "Lugares y proyectos donde trabajé antes.",
+        "live": "Sitios que están en vivo ahora mismo.",
+        "dev": "Lo que se está cocinando en la planta."
+      },
+      "badge": {
+        "past": "CLÁSICO",
+        "live": "AL AIRE",
+        "dev": "EN OBRA"
+      },
+      "watch": "Ver el capítulo"
+    },
+    "contact": {
+      "title": "¡D'oh! ¿Necesitás contactarme?",
+      "subtitle": "Como diría Homero: «Mmm... colaboraciones».",
+      "chalk": "No voy a dejar tu proyecto para mañana",
+      "formTitle": "¡Excelente! Mandame un mensaje",
+      "name": "Nombre",
+      "email": "Email",
+      "message": "Mensaje",
+      "namePlaceholder": "Tu nombre",
+      "emailPlaceholder": "tu@email.com",
+      "messagePlaceholder": "Contame en qué te puedo ayudar",
+      "send": "Enviar mensaje",
+      "sending": "Enviando",
+      "success": "¡Woo-hoo! Mensaje enviado",
+      "successText": "¡Ay, caramba! Llegó perfecto. Te respondo lo antes posible.",
+      "sendAnother": "Enviar otro mensaje",
+      "errorRequired": "¡D'oh! Completá todos los campos.",
+      "errorEmail": "Ese email no parece válido.",
+      "errorSend": "No se pudo enviar el mensaje. Probá de nuevo o escribime por email.",
+      "direct": "O escribime directo",
+      "phone": "teléfono"
+    },
+    "footer": {
+      "madeBy": "Web desarrollada y diseñada por",
+      "rights": "Todos los derechos reservados."
+    }
+  },
+  "selector": {
+    "kicker": "Portfolio de Brian Darakdjian",
+    "title": "Elegí tu realidad",
+    "subtitle": "El mismo portfolio en tres universos. ¿Por dónde querés entrar?",
+    "role": "Desarrollador Web",
+    "items": {
+      "matrix": {
+        "name": "Matrix",
+        "tagline": "Terminal, lluvia de código y la pastilla roja."
+      },
+      "starWars": {
+        "name": "Star Wars",
+        "tagline": "Hologramas, hiperespacio y una galaxia de proyectos."
+      },
+      "simpsons": {
+        "name": "Los Simpsons",
+        "tagline": "Nubes, donas y una tele que cambia de canal."
+      }
+    },
+    "enter": "Entrar",
+    "hint": "← → para elegir · Enter para entrar",
+    "hintTouch": "Deslizá o usá las flechas para elegir",
+    "footer": "Hecho con React, TypeScript y Tailwind",
+    "prev": "Universo anterior",
+    "next": "Universo siguiente"
+  },
+  "film": {
+    "close": "Cerrar",
+    "prev": "Escena anterior",
+    "next": "Escena siguiente",
+    "scene": "Escena",
+    "of": "de",
+    "synopsis": "Sinopsis",
+    "genre": "Género",
+    "year": "Año",
+    "cast": "Reparto",
+    "director": "Dirigida por",
+    "scenes": "Escenas",
+    "visit": "Visitar el sitio",
+    "presents": "Brian Darakdjian presenta",
+    "hint": "Usá ← → para cambiar de escena · Esc para salir",
+    "zoom": "Ampliar captura",
+    "zoomHint": "Tocá para ampliar",
+    "panHint": "Deslizá para recorrer la captura"
+  },
+  "films": {
+    "malvon": {
+      "title": "Malvón",
+      "subtitle": "La trastienda digital",
+      "tagline": "Detrás de cada empanada hay un sistema.",
+      "genre": "Software a medida · Drama corporativo",
+      "year": "2026",
+      "cast": "9 aplicaciones internas",
+      "synopsis": "Una cadena de empanadas artesanas con tiendas en varios países y una marca hermana, Brianzzi. Ventas, calidad, finanzas, sabores nuevos, equipos y reseñas vivían repartidos entre planillas y correos. Esta es la historia de cómo cada departamento consiguió su propia herramienta, todas conectadas desde un mismo portal.",
+      "scenes": {
+        "portal": {
+          "title": "Portal Corporativo",
+          "tagline": "Todo empieza en una puerta.",
+          "text": "El punto de partida de la empresa. Desde acá cada departamento (Tecnología, Operaciones, Expansión, Finanzas, Factory y Desarrollos) entra a su aplicación y encuentra los formularios internos. Un solo acceso para todo el ecosistema."
+        },
+        "operaciones": {
+          "title": "Operaciones y Ventas",
+          "tagline": "Cada semana, cada tienda, bajo la lupa.",
+          "text": "El tablero de los supervisores. Mide el cumplimiento de apertura y cierre de cada tienda, compara contra la semana anterior y marca en rojo lo que está en riesgo. También gestiona supervisiones, formaciones y registros de la red."
+        },
+        "finanzas": {
+          "title": "Finanzas",
+          "tagline": "Los números no mienten. Pero hay que calcularlos.",
+          "text": "Un simulador que calcula el coste de producir un pedido, el capital necesario y los ingresos según tarifa. Sigue la trazabilidad de cada lote, desde la compra hasta la venta, y muestra estadísticas de ingresos, facturas y ticket medio mes a mes."
+        },
+        "calidad": {
+          "title": "Calidad",
+          "tagline": "Ni una empanada fuera de lugar.",
+          "text": "El control de calidad de la planta. Compara Malvón y Brianzzi en cuota de aceptación, detección de metales y desvíos por conteo y por peso, para que cada paquete salga como tiene que salir."
+        },
+        "id": {
+          "title": "I+D · Nuevos sabores",
+          "tagline": "En la cocina se inventa el futuro.",
+          "text": "El laboratorio de sabores. El equipo de cocina abre investigaciones, prueba versiones, guarda cada cambio de receta y lleva el catálogo de sabores e ingredientes de las dos marcas. Con modo oscuro, para las noches largas de pruebas."
+        },
+        "inventario": {
+          "title": "Inventario IT",
+          "tagline": "Cada equipo tiene una historia.",
+          "text": "El registro de todo el hardware de la empresa: portátiles, servidores, monitores, móviles, tablets y routers. Muestra qué está asignado, qué está libre y qué está en cuarentena, y guarda el historial de incidencias y arreglos."
+        },
+        "itsm": {
+          "title": "ITSM · Gestión de trabajo",
+          "tagline": "Nada vencido. Bien.",
+          "text": "El centro de mando del día a día: tareas, proyectos, promociones y precios en un mismo lugar. Cada persona ve su trabajo, lo que vence hoy y lo que necesita su acción, con chat interno y un asistente de IA."
+        },
+        "resenas": {
+          "title": "Reseñas",
+          "tagline": "Lo que dicen de nosotros, tienda por tienda.",
+          "text": "Conecta con Google Business Profile y junta las reseñas de todas las tiendas. Filtra por país, grupo o tienda, compara las últimas dos semanas con el histórico y exporta informes en CSV o PDF."
+        },
+        "canalB2b": {
+          "title": "Canal B2B · Brianzzi",
+          "tagline": "La marca hermana también tiene su escena.",
+          "text": "El portal de Brianzzi para su canal profesional. Resume ventas de los últimos doce meses, la evolución y los resultados de las auditorías, los pedidos de muestras y las solicitudes de cambio."
+        }
+      }
+    },
+    "publifer": {
+      "title": "Publifer",
+      "subtitle": "Espai Creatiu",
+      "tagline": "Todo lo que se puede imprimir, se puede imprimir bonito.",
+      "genre": "Web corporativa · Artes gráficas",
+      "cast": "Inicio, quiénes somos, servicios, catálogos y contacto",
+      "synopsis": "Un taller de Son Servera con más de 25 años de oficio en imprenta, serigrafía y rotulación necesitaba una vidriera a su altura. Una web sobria y editorial, con tonos cálidos y mucho aire, donde los trabajos y los catálogos hablan solos.",
+      "scenes": {
+        "inicio": {
+          "title": "Imprenta, serigrafía y rotulación",
+          "tagline": "Una carta de colores lo dice todo.",
+          "text": "La bienvenida: el nombre en grande, una foto de muestras Pantone y un menú mínimo para llegar a lo importante."
+        },
+        "nosotros": {
+          "title": "Acerca de Publi Fer",
+          "tagline": "25 años de tinta.",
+          "text": "La historia del taller: su experiencia en publicidad, la serigrafía como punto fuerte y su nueva casa en Son Servera."
+        },
+        "servicios": {
+          "title": "Serigrafía",
+          "tagline": "Cada técnica, su escena.",
+          "text": "Serigrafía, DTF y el resto de técnicas, cada una con su explicación, fotos del trabajo real y un botón para pedir presupuesto."
+        },
+        "catalogos": {
+          "title": "Catálogos",
+          "tagline": "La colección del año, a un clic.",
+          "text": "Los catálogos de textil y merchandising de los proveedores, listos para hojear y elegir producto."
+        },
+        "contacto": {
+          "title": "Contacto",
+          "tagline": "El final feliz: un presupuesto.",
+          "text": "Dirección, web, email, Instagram y teléfono, junto a un formulario para escribir directo al taller."
+        }
+      }
+    },
+    "almango": {
+      "title": "AlMango",
+      "subtitle": "Tu aliado financiero de confianza",
+      "tagline": "Tu préstamo, en minutos y sin papeles.",
+      "genre": "Fintech · Plataforma de préstamos",
+      "cast": "Préstamos, red de comercializadores, FAQ y derechos del usuario",
+      "synopsis": "Una financiera argentina que quería sacar los préstamos personales de la ventanilla. La web acompaña a quien pide un crédito de principio a fin: explica cómo funciona, responde dudas, informa derechos y muestra cómo pagar, todo en un lenguaje claro y sin letra chica escondida.",
+      "scenes": {
+        "inicio": {
+          "title": "Tu préstamo personal, rápido y fácil",
+          "tagline": "Rápido y fácil.",
+          "text": "La promesa principal: préstamos de hasta $3.000.000, 100% online y con la solicitud a un clic."
+        },
+        "nosotros": {
+          "title": "Quiénes somos",
+          "tagline": "Un aliado financiero de confianza.",
+          "text": "Quiénes están detrás, por qué elegirlos y los requisitos mínimos, presentados en tarjetas fáciles de escanear."
+        },
+        "comercializadores": {
+          "title": "Red de comercializadores",
+          "tagline": "145 aliados en todo el país.",
+          "text": "Una sección para sumar vendedores independientes, con los beneficios de formar parte de la red."
+        },
+        "faq": {
+          "title": "Preguntas frecuentes",
+          "tagline": "Todas las dudas, antes de pedirlo.",
+          "text": "Requisitos, tiempos de aprobación, montos, cuotas y CFT, respondidos en un acordeón."
+        },
+        "derechos": {
+          "title": "Información a usuarios financieros",
+          "tagline": "La letra chica, en letra grande.",
+          "text": "Modelo de contrato, botón de arrepentimiento y solicitud de baja, como pide la normativa del Banco Central."
+        },
+        "pagos": {
+          "title": "Medios de pago",
+          "tagline": "Pagar también es fácil.",
+          "text": "Débito automático, tarjeta, transferencia y más, cada uno con su explicación."
+        }
+      }
+    },
+    "nuria": {
+      "title": "Nuria Iturrioz",
+      "subtitle": "Con Z de raza",
+      "tagline": "Pasión, disciplina y dedicación en cada swing.",
+      "genre": "Biografía deportiva · Golf",
+      "cast": "Inicio, carrera, trofeos, estadísticas y galería",
+      "synopsis": "La web oficial de una golfista profesional del Ladies European Tour. Un espacio para seguirla, conocer su historia y revisar sus números, con su carrera contada como un recorrido, una sala de trofeos y estadísticas de cada temporada.",
+      "scenes": {
+        "inicio": {
+          "title": "Inicio",
+          "tagline": "Primer golpe del día.",
+          "text": "Una portada a pantalla completa con Nuria en acción y los logos de sus patrocinadores."
+        },
+        "sobreMi": {
+          "title": "Sobre mí",
+          "tagline": "Bienvenidos a mi espacio.",
+          "text": "Una presentación en primera persona, con su foto y un acceso directo a su historia."
+        },
+        "carrera": {
+          "title": "Mi carrera",
+          "tagline": "De los 12 años al circuito europeo.",
+          "text": "Su trayectoria contada como una línea de tiempo, desde sus comienzos hasta el profesionalismo."
+        },
+        "trofeos": {
+          "title": "Mis trofeos",
+          "tagline": "La sala de los campeonatos.",
+          "text": "Una vitrina con las copas de cada título, iluminadas como en un museo."
+        },
+        "reconocimientos": {
+          "title": "Reconocimientos",
+          "tagline": "La galería de honor.",
+          "text": "Los diplomas y premios de federaciones, enmarcados y colgados en la pared."
+        },
+        "estadisticas": {
+          "title": "Estadísticas",
+          "tagline": "Los números del LET.",
+          "text": "Victorias, top 10, torneos jugados y temporadas, más los resultados filtrables por año."
+        },
+        "juego": {
+          "title": "Mi juego",
+          "tagline": "Cada golpe, medido.",
+          "text": "Precisión de drive, greens en regulación, putts y scrambling, mostrados como barras y tarjetas."
+        }
+      }
+    },
+    "manduca": {
+      "title": "Manduca",
+      "subtitle": "Proteína de algarroba",
+      "tagline": "Parece carne, pero no lo es.",
+      "genre": "E-commerce · Alimentación",
+      "cast": "Producto, valores, nutrición, mapa de tiendas y recetas",
+      "synopsis": "Un químico mallorquín pasó años buscando un alimento proteico hecho con semillas de algarroba, hasta que apareció Manduca. La web cuenta qué es, por qué existe y cómo se cocina, y lleva al visitante a la tienda online o al punto de venta más cercano.",
+      "scenes": {
+        "inicio": {
+          "title": "Manduca es pura proteína de algarroba para cocinar",
+          "tagline": "La hidratas y a cocinar.",
+          "text": "Un carrusel a pantalla completa con el producto, la algarroba y para quién es: veganos, celíacos y diabéticos."
+        },
+        "queEs": {
+          "title": "¿Qué es Manduca?",
+          "tagline": "Un solo ingrediente.",
+          "text": "Qué es, cómo se prepara y por qué reemplaza a la carne picada, con una franja de sellos: sin gluten, sin soja, sin lactosa."
+        },
+        "porQue": {
+          "title": "Por qué Manduca",
+          "tagline": "Proteína vegetal del Mediterráneo.",
+          "text": "Por qué el algarrobo: crece sin riego ni abono y forma parte de la cultura agrícola del Mediterráneo."
+        },
+        "nutricion": {
+          "title": "¿Cuáles son sus valores nutricionales?",
+          "tagline": "Más de un 60% de proteína.",
+          "text": "La etiqueta real del paquete junto a la tabla nutricional, explicada para cualquiera."
+        },
+        "dondeComprar": {
+          "title": "Dónde comprar y comer Manduca",
+          "tagline": "Manduca vuela hasta ti.",
+          "text": "Un mapa interactivo con todas las tiendas y restaurantes donde encontrarla."
+        },
+        "creador": {
+          "title": "El creador",
+          "tagline": "¡Eureka!",
+          "text": "La historia de Bernardo Cifre, el químico que inventó Manduca en el campo de Mallorca."
+        }
+      }
+    },
+    "gregal": {
+      "title": "Gregal Properties",
+      "subtitle": "Consultora inmobiliaria en Mallorca",
+      "tagline": "Encuentra tu hogar perfecto.",
+      "genre": "Inmobiliaria · Mediterráneo",
+      "cast": "Buscador con IA, propiedades, tasación online y reseñas",
+      "synopsis": "Una consultora inmobiliaria de Mallorca especializada en propiedades premium, desde casas tradicionales en el interior hasta obra nueva frente al mar. La web combina un buscador con inteligencia artificial, una tasación online gratuita y un proceso de compra explicado paso a paso.",
+      "scenes": {
+        "inicio": {
+          "title": "Encuentra tu hogar perfecto",
+          "tagline": "Con el mar de fondo.",
+          "text": "Una portada con el Mediterráneo y un buscador por ubicación y tipo, con búsqueda asistida por IA."
+        },
+        "propiedades": {
+          "title": "Nuestras promociones y propiedades",
+          "tagline": "Dos puertas de entrada.",
+          "text": "Accesos directos a las promociones de obra nueva y al catálogo completo de propiedades."
+        },
+        "valoracion": {
+          "title": "Evalúe su propiedad ahora",
+          "tagline": "¿Cuánto vale tu casa?",
+          "text": "Una tasación online gratuita: el propietario elige casa, piso, terreno o local y empieza en un clic."
+        },
+        "nosotros": {
+          "title": "Consultora inmobiliaria en Mallorca",
+          "tagline": "Mallorca, de puertas adentro.",
+          "text": "La consultora, su cartera y su equipo multilingüe, con el asesoramiento legal, fiscal y técnico."
+        },
+        "servicios": {
+          "title": "Nuestros servicios",
+          "tagline": "Del alquiler a la escritura.",
+          "text": "Alquiler, venta, gestión de propiedades, consultoría de mercado y asesoría legal y financiera."
+        },
+        "proceso": {
+          "title": "Nuestro proceso",
+          "tagline": "Cinco pasos hasta las llaves.",
+          "text": "Consulta, búsqueda personalizada, visitas, negociación y cierre, en una línea de tiempo clara."
+        },
+        "opiniones": {
+          "title": "No te quedes solo con lo que decimos nosotros",
+          "tagline": "Que lo digan los clientes.",
+          "text": "Reseñas de compradores de distintos países, con su valoración media."
+        }
+      }
+    },
+    "inebal": {
+      "title": "INEBAL",
+      "subtitle": "Instaladora Eléctrica y Frío Balear",
+      "tagline": "Si funciona con luz, agua o frío, está en buenas manos.",
+      "genre": "Web corporativa · Instalaciones técnicas",
+      "cast": "Inicio, servicios, sobre nosotros y contacto",
+      "synopsis": "Una empresa joven de Mallorca dedicada a electricidad, climatización y frío industrial. La web presenta en pocos pasos todo lo que hacen, quiénes son y cómo pedir un presupuesto, con un tono técnico pero cercano.",
+      "scenes": {
+        "inicio": {
+          "title": "Instalación y mantenimiento técnico integral",
+          "tagline": "Manos a la obra.",
+          "text": "Una portada con el equipo trabajando en una instalación solar y acceso directo a los servicios."
+        },
+        "servicios": {
+          "title": "Nuestros servicios",
+          "tagline": "Seis especialidades, un solo equipo.",
+          "text": "Climatización, fontanería, electricidad, piscinas, mantenimiento integral y energía solar, cada uno con su detalle."
+        },
+        "nosotros": {
+          "title": "Sobre nosotros",
+          "tagline": "Jóvenes, formados y cercanos.",
+          "text": "Quiénes son y cómo trabajan en viviendas, locales e instalaciones industriales."
+        },
+        "contacto": {
+          "title": "Contacto",
+          "tagline": "Un mensaje y están en camino.",
+          "text": "Un formulario simple junto a una imagen de alta tensión, para pedir presupuesto sin vueltas."
+        }
+      }
+    },
+    "bonapedra": {
+      "title": "Bona Pedra",
+      "subtitle": "Excavacions",
+      "tagline": "No solo movemos tierra: eliminamos límites.",
+      "genre": "Web corporativa · Obra civil",
+      "cast": "Inicio, sobre nosotros, servicios y contacto",
+      "synopsis": "Una empresa mallorquina de excavaciones con maquinaria moderna y plazos claros. La web transmite solidez con tonos tierra, fotos aéreas de obra y un camino directo hacia el presupuesto.",
+      "scenes": {
+        "inicio": {
+          "title": "Excavaciones profesionales",
+          "tagline": "Desde los cimientos.",
+          "text": "Una toma aérea de la obra y el botón para solicitar presupuesto, sin rodeos."
+        },
+        "nosotros": {
+          "title": "Compromiso que deja huella",
+          "tagline": "Relaciones sólidas como el terreno.",
+          "text": "La historia y la forma de trabajar de la empresa, junto a la maquinaria en acción."
+        },
+        "servicios": {
+          "title": "Todo lo que podemos hacer por ti",
+          "tagline": "Todo lo que pueden hacer por ti.",
+          "text": "Excavaciones, nivelaciones, zanjas, movimiento de tierras, alquiler a particulares y preparación para obra civil."
+        },
+        "contacto": {
+          "title": "Ponte en contacto",
+          "tagline": "La pala está lista.",
+          "text": "Un formulario de contacto acompañado de una pala cargadora a pleno sol."
+        }
+      }
+    },
+    "management": {
+      "title": "MDM",
+      "subtitle": "Management & Development Mallorca",
+      "tagline": "Tu visión nos impulsa, nuestra experiencia la hace posible.",
+      "genre": "Web corporativa · Arquitectura e ingeniería",
+      "cast": "Inicio, sobre nosotros, servicios y contacto",
+      "synopsis": "Un estudio de Mallorca que gestiona proyectos de principio a fin: arquitectura, ingeniería, dirección de obra e interiorismo. La web es sobria y elegante, como sus edificios, y deja claro qué hacen y cómo contactarlos.",
+      "scenes": {
+        "inicio": {
+          "title": "Gestión integral de proyectos en Mallorca",
+          "tagline": "Proyectos exigentes.",
+          "text": "Una fachada contemporánea a pantalla completa y un mensaje directo: arquitectura, obras y dirección personalizada."
+        },
+        "nosotros": {
+          "title": "Sobre nosotros",
+          "tagline": "Codo a codo con el cliente.",
+          "text": "Quiénes son, cómo trabajan y por qué cada proyecto se trata como único."
+        },
+        "servicios": {
+          "title": "Nuestros servicios",
+          "tagline": "Del plano a la llave.",
+          "text": "Proyectos de ingeniería, project management, interiorismo y licencias, cada uno con su lista de trabajos."
+        },
+        "contacto": {
+          "title": "Contáctanos",
+          "tagline": "La primera reunión empieza acá.",
+          "text": "Un formulario sobre una arquitectura de cristal, para contar el proyecto."
+        }
+      }
+    },
+    "gied": {
+      "title": "GIED",
+      "subtitle": "Gestión Integral de Eventos Deportivos",
+      "tagline": "Elevamos el nivel de los eventos deportivos en Baleares.",
+      "genre": "Web corporativa · Deporte",
+      "cast": "Quiénes son, proceso, servicios y contacto",
+      "synopsis": "Una empresa familiar de Baleares que organiza torneos, campus, carreras y competiciones de principio a fin. La web presenta al equipo, explica su método en seis pasos y muestra todos los formatos de evento que pueden llevar a cabo.",
+      "scenes": {
+        "inicio": {
+          "title": "¡Bienvenidos a GIED!",
+          "tagline": "La largada.",
+          "text": "Una portada con una carrera popular en plena salida y la propuesta en una frase."
+        },
+        "queEs": {
+          "title": "¿Qué es GIED?",
+          "tagline": "Deportistas organizando para deportistas.",
+          "text": "Su fundación, la gestión integral y el ADN deportivo del equipo, en tarjetas con datos clave."
+        },
+        "proceso": {
+          "title": "Nuestro proceso",
+          "tagline": "De la idea a la meta.",
+          "text": "Seis pasos, de la conceptualización a la evaluación, en una línea de tiempo con iconos."
+        },
+        "servicios": {
+          "title": "Nuestros servicios",
+          "tagline": "Un formato para cada evento.",
+          "text": "Torneos privados, competiciones federadas, campus, clínics, diadas y carreras populares."
+        },
+        "contacto": {
+          "title": "Cuéntanos tu idea",
+          "tagline": "Cuéntanos tu idea.",
+          "text": "Un formulario para proponer un evento y los datos de contacto del equipo."
+        }
+      }
+    }
+  },
+  "carousel": {
+    "goTo": "Ir al proyecto {{n}} de {{total}}"
+  }
 }

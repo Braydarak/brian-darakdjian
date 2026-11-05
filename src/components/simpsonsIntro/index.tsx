@@ -1,131 +1,171 @@
 import React, { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { gsap } from "gsap";
+import { lockScroll, unlockScroll } from "../../lib/smoothScroll";
 import cloud from "../../assets/cloud.svg";
 import simpsonsLogo from "../../assets/The-Simpsons.png";
 
 type SimpsonsIntroProps = {
+  // Se llama cuando el sitio ya puede empezar a aparecer (durante el fundido)
+  onReveal: () => void;
+  // Se llama al terminar, para desmontar la intro
   onFinish: () => void;
 };
 
-const HOTSPOT = {
-  xPercent: 50,
-  yPercent: 60,
-};
+// Punto del logo donde termina el zoom (en % del ancho y alto de la imagen)
+const HOTSPOT = { xPercent: 50, yPercent: 60 };
 
-const SimpsonsIntro: React.FC<SimpsonsIntroProps> = ({ onFinish }) => {
+const SimpsonsIntro: React.FC<SimpsonsIntroProps> = ({ onReveal, onFinish }) => {
+  const { t } = useTranslation();
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const cloudLeftRef = useRef<HTMLImageElement | null>(null);
   const cloudRightRef = useRef<HTMLImageElement | null>(null);
+  const cloudBottomRef = useRef<HTMLImageElement | null>(null);
   const logoRef = useRef<HTMLImageElement | null>(null);
-  const tlRef = useRef<gsap.core.Timeline | null>(null);
+  const hintRef = useRef<HTMLParagraphElement | null>(null);
 
   useEffect(() => {
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
     const overlay = overlayRef.current;
-    const cloudLeft = cloudLeftRef.current;
-    const cloudRight = cloudRightRef.current;
+    const clouds = [cloudLeftRef.current, cloudRightRef.current, cloudBottomRef.current];
     const logo = logoRef.current;
 
-    if (!overlay || !cloudLeft || !cloudRight || !logo) {
+    let revealed = false;
+    let finished = false;
+    const reveal = () => {
+      if (revealed) return;
+      revealed = true;
+      onReveal();
+    };
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      reveal();
       onFinish();
+    };
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!overlay || !logo || clouds.some((c) => !c) || reduceMotion) {
+      finish();
       return;
     }
 
+    lockScroll();
+
+    let tl: gsap.core.Timeline | null = null;
+
     const startAnimation = () => {
-      const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
-      tlRef.current = tl;
+      const [left, right, bottom] = clouds as HTMLImageElement[];
+      tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
-      // Estados iniciales
-      gsap.set([cloudLeft, cloudRight], { opacity: 0, scale: 1.12, y: -40 });
-      gsap.set(logo, { opacity: 0, y: 30, scale: 0.08, x: 0 });
+      // La nube derecha va espejada y la de abajo centrada (GSAP maneja el transform)
+      gsap.set(left, { opacity: 0, scale: 1.15 });
+      gsap.set(right, { opacity: 0, scaleX: -1.15, scaleY: 1.15 });
+      gsap.set(bottom, { opacity: 0, scale: 1.15, xPercent: -50 });
+      gsap.set(logo, { opacity: 0, y: 40, scale: 0.08 });
 
-      // 1) Aparición de nubes
-      tl.to([cloudLeft, cloudRight], { opacity: 1, duration: 0.6, stagger: 0.16 });
+      // 1) Las nubes tapan el cielo
+      tl.to(left, { opacity: 1, scale: 1, duration: 0.6 });
+      tl.to(right, { opacity: 1, scaleX: -1, scaleY: 1, duration: 0.6 }, "<0.12");
+      tl.to(bottom, { opacity: 1, scale: 1, duration: 0.6 }, "<0.12");
 
-      // 2) Separación de nubes
-      tl.to(cloudLeft, { x: "-80vw", duration: 1.3, ease: "power2.inOut" }, "<");
-      tl.to(cloudRight, { x: "80vw", duration: 1.3, ease: "power2.inOut" }, "<");
+      // 2) Se abren hacia los costados y abajo
+      tl.to(left, { x: "-75vw", y: "-8vh", rotate: -8, duration: 1.4, ease: "power2.inOut" }, "+=0.15");
+      tl.to(right, { x: "75vw", y: "-4vh", rotate: 8, duration: 1.4, ease: "power2.inOut" }, "<");
+      tl.to(bottom, { y: () => window.innerHeight, duration: 1.4, ease: "power2.inOut" }, "<");
 
-      // 3) Aparición del logo desde muy pequeño y crecimiento continuo
-      tl.to(logo, { opacity: 1, y: 0, scale: 0.92, duration: 1.2, ease: "power2.out" }, "-=0.2");
-      tl.to({}, { duration: 0.15 });
+      // 3) El logo sale desde el fondo con un rebote
+      tl.to(logo, { opacity: 1, y: 0, scale: 1, duration: 1.3, ease: "back.out(1.6)" }, "-=0.9");
+      tl.to({}, { duration: 0.35 });
 
-      // 4) Zoom centrado en la "P" continuando el crecimiento
-      const rect = logo.getBoundingClientRect();
-      const hotspotX = rect.left + (rect.width * HOTSPOT.xPercent) / 100;
-      const hotspotY = rect.top + (rect.height * HOTSPOT.yPercent) / 100;
-      const viewportCenterX = window.innerWidth / 2;
-      const viewportCenterY = window.innerHeight / 2;
-      const dx = viewportCenterX - hotspotX;
-      const dy = viewportCenterY - hotspotY;
-
-      tl.to(logo, {
-        transformOrigin: `${HOTSPOT.xPercent}% ${HOTSPOT.yPercent}%`,
-        x: `+=${dx}`,
-        y: `+=${dy}`,
-        scale: 7.5,
-        duration: 1.9,
-        ease: "power3.in",
+      // 4) Zoom hacia el centro del logo
+      tl.add(() => {
+        if (!tl) return;
+        const rect = logo.getBoundingClientRect();
+        const dx = window.innerWidth / 2 - (rect.left + (rect.width * HOTSPOT.xPercent) / 100);
+        const dy = window.innerHeight / 2 - (rect.top + (rect.height * HOTSPOT.yPercent) / 100);
+        gsap.to(logo, {
+          transformOrigin: `${HOTSPOT.xPercent}% ${HOTSPOT.yPercent}%`,
+          x: `+=${dx}`,
+          y: `+=${dy}`,
+          scale: 8,
+          duration: 1.6,
+          ease: "power3.in",
+        });
       });
+      tl.to({}, { duration: 1.25 });
 
-      // 5) Fade del overlay y mostrar sitio
-      tl.to(overlay, { opacity: 0, duration: 0.6, ease: "power2.out" });
-      tl.add(() => onFinish());
+      // 5) El sitio aparece mientras la intro se desvanece
+      tl.add(reveal);
+      tl.to(overlay, { opacity: 0, duration: 0.6 });
+      tl.add(finish);
     };
 
-    if (logo.complete) {
-      startAnimation();
-    } else {
-      logo.onload = () => startAnimation();
+    const skip = () => {
+      tl?.kill();
+      gsap.killTweensOf(logo);
+      reveal();
+      gsap.to(overlay, { opacity: 0, duration: 0.35, onComplete: finish });
+    };
+
+    if (logo.complete && logo.naturalWidth > 0) startAnimation();
+    else {
+      logo.onload = startAnimation;
+      logo.onerror = finish;
     }
+
+    gsap.fromTo(hintRef.current, { opacity: 0 }, { opacity: 1, delay: 1, duration: 0.5 });
+    window.addEventListener("keydown", skip, { once: true });
+    window.addEventListener("pointerdown", skip, { once: true });
 
     return () => {
-      document.body.style.overflow = prevOverflow;
-      tlRef.current?.kill();
+      unlockScroll();
+      tl?.kill();
+      gsap.killTweensOf([overlay, logo, ...clouds]);
+      window.removeEventListener("keydown", skip);
+      window.removeEventListener("pointerdown", skip);
     };
-  }, [onFinish]);
-
-  const skipIntro = () => {
-    if (tlRef.current) {
-      tlRef.current.progress(1);
-    } else {
-      onFinish();
-    }
-  };
+  }, [onReveal, onFinish]);
 
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-20 bg-sky-200/95 backdrop-blur-[1px] flex items-center justify-center overflow-hidden"
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-sky-200"
+      role="presentation"
     >
-      <button
-        onClick={skipIntro}
-        className="absolute top-4 right-4 px-4 py-2 rounded-full bg-black/70 text-white text-sm shadow-lg hover:bg-black/80 transition"
-        aria-label="Saltar intro"
-      >
-        Saltar
-      </button>
-
       <img
         ref={cloudLeftRef}
         src={cloud}
-        alt="cloud-left"
-        className="absolute left-[-10vw] top-[10vh] w-[65vw] max-w-[720px] opacity-90"
+        alt=""
+        aria-hidden="true"
+        className="absolute left-[-12vw] top-[6vh] w-[75vw] max-w-[820px] will-change-transform"
       />
       <img
         ref={cloudRightRef}
         src={cloud}
-        alt="cloud-right"
-        className="absolute right-[-10vw] top-[16vh] w-[65vw] max-w-[720px] opacity-80 rotate-180"
+        alt=""
+        aria-hidden="true"
+        className="absolute right-[-12vw] top-[22vh] w-[75vw] max-w-[820px] will-change-transform"
+      />
+      <img
+        ref={cloudBottomRef}
+        src={cloud}
+        alt=""
+        aria-hidden="true"
+        className="absolute bottom-[-8vh] left-1/2 w-[90vw] max-w-[960px] will-change-transform"
       />
       <img
         ref={logoRef}
         src={simpsonsLogo}
-        alt="The Simpsons"
-        className="relative w-[72vw] max-w-[760px] drop-shadow-[4px_6px_0_rgba(0,0,0,0.35)]"
+        alt=""
+        aria-hidden="true"
+        className="relative w-[78vw] max-w-[760px] will-change-transform"
       />
+      <p
+        ref={hintRef}
+        className="absolute inset-x-0 bottom-6 text-center font-Raleway text-xs font-black uppercase tracking-[0.2em] text-black/50 opacity-0"
+      >
+        {t("simpsons.intro.skip")}
+      </p>
     </div>
   );
 };

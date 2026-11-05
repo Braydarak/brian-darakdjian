@@ -1,14 +1,4 @@
-import Publifer from "../../assets/publifer.webp";
-import Manduca from "../../assets/manduca-logo.avif";
-import GIED from "../../assets/gied.png";
-import AlmangoLogo from "../../assets/almango.avif";
-import NuriaIturriozLogo from "../../assets/NuriaLogo.ok_.avif";
-import MANPOWERS from "../../assets/manPowersLogo.avif";
-import TAMD from "../../assets/tamdCosmeticsLogo.avif";
-import GREGAL from "../../assets/gregalPropertiesLogo.png";
-import INEBAL from "../../assets/inebalLogo.png";
-import BONAPEDRA from "../../assets/bonapedraLogo.avif";
-import MANAGEMENT from "../../assets/mdmLogo.avif";
+import { works } from "../../data/works";
 import { useTranslation } from "react-i18next";
 import { t } from "i18next";
 import { useEffect, useRef } from "react";
@@ -107,85 +97,6 @@ const Work = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const { t } = useTranslation();
 
-  const works = [
-    {
-      title: "Publifer",
-      description: t("publiferDesc"),
-      image: Publifer,
-      link: "https://publifercm.com/",
-      inProgress: false,
-    },
-    {
-      title: "Almango",
-      description: t("almangoDesc"),
-      image: AlmangoLogo,
-      link: "https://www.almango.com.ar/",
-      inProgress: false,
-    },
-    {
-      title: "Nuria Iturrioz",
-      description: t("nuriaDesc"),
-      image: NuriaIturriozLogo,
-      link: "https://nuriaiturrioz.com/",
-      inProgress: false,
-    },
-    {
-      title: "Manduca Proteina",
-      description: t("manducaDesc"),
-      image: Manduca,
-      link: "https://manducaproteina.com/",
-      inProgress: false,
-    },
-    {
-      title: "MAN Powers",
-      description: t("manDesc"),
-      image: MANPOWERS,
-      link: "https://manpowers.es/",
-      inProgress: false,
-    },{
-      title: "TAMD Cosmetics",
-      description: t("tamdDesc"),
-      image: TAMD,
-      link: "https://tamdcosmetics.com/",
-      inProgress: false,
-    },
-    {
-      title: "Gregal Properties",
-      description: t("gregalDesc"),
-      image: GREGAL,
-      link: "https://gregalproperties.com/",
-      inProgress: false,
-    },
-    {
-      title: "INEBAL",
-      description: t("inebalDesc"),
-      image: INEBAL,
-      link: "https://inebal-web.vercel.app/",
-      inProgress: true,
-    },
-    {
-      title: "BONAPEDRA EXCAVACIONS",
-      description: t("bonapedraDesc"),
-      image: BONAPEDRA,
-      link: "https://bona-pedra-excavacions-web.vercel.app/",
-      inProgress: true,
-    },
-    {
-      title: "MANAGEMENT & DEVELOPMENT MALLORCA",
-      description: t("managementDesc"),
-      image: MANAGEMENT,
-      link: "https://mdm-web-iota.vercel.app/",
-      inProgress: true,
-    },
-    {
-      title: "GIED",
-      description: t("giedDesc"),
-      image: GIED,
-      link: "https://gied.vercel.app/",
-      inProgress: true,
-    }
-
-  ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -246,14 +157,14 @@ const Work = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 max-w-7xl mx-auto">
-        {works.map((work, index) => (
+        {works.map((work) => (
           <WorkCard
-            key={index}
+            key={work.title}
             title={work.title}
-            description={work.description}
+            description={t(work.descriptionKey)}
             image={work.image}
             link={work.link}
-            inProgress={work.inProgress}
+            inProgress={work.status === "dev"}
           />
         ))}
       </div>
